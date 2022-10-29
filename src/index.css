@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.css-u6loev-MuiFormHelperText-root
+ {
+  color: red!important;
+  background-color: black;
+  line-height: 0%;
+  margin-top: 0px !important;
+}
+

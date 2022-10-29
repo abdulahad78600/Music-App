@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Input ,Button } from "@mui/material";
+import { Input ,Button,TextField } from "@mui/material";
 import "./Login.css";
 
 const Login=()=>
@@ -31,12 +31,31 @@ const Login=()=>
         </div>
         <br />
         <div className="emailInput">
-        <Input placeholder="Enter Your Email"  name="email"  error={errorText == "Invalid format"}
-                  helperText={errorText} value={userData.email} sx={{backgroundColor:"white"}} onChange={handleOnChange} />
+        <TextField
+                  sx={{backgroundColor:"white"}}
+                  error={errorText == "Invalid Format"}
+                  helperText={errorText}
+                  id="outlined-basic"
+                  label="Enter your email"
+                  variant="standard"
+                  name="email"
+                  size="small"
+                  value={userData.email}
+                  onChange={handleOnChange}
+                />
         </div>
         <br />
         <div className="emailInput">
-        <Input placeholder="Enter Your Password" name="password" type="password" value={userData.password} sx={{backgroundColor:"white"}} onChange={handleOnChange} />
+        <TextField
+                  sx={{backgroundColor:"white"}}
+                  id="standard-multiline-flexible"
+                  label="Password"
+                  value={userData.password}
+                  onChange={handleOnChange}
+                  variant="standard"
+                  name="password"
+                  type="password"
+                />
         </div>
         <br />
         <div className="signupButton">

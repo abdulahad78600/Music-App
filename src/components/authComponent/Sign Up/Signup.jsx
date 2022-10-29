@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Input ,Button } from "@mui/material";
+import { TextField ,Button } from "@mui/material";
 import "./Signup.css";
 
 const Signup=()=>
@@ -49,21 +49,50 @@ const [userData, setUserData] = useState({
         <div className="mainContainer">
          <h1 className="heading">Create an Account</h1>   
         </div>
-        <br />
         <div className="emailInput">
-        <Input placeholder="Enter Your Name"  error={errorText3 == "Only characters are allowed"}
-                  helperText={errorText3}  name="name"  value={userData.name} sx={{backgroundColor:"white"}} onChange={handleOnChange} />
+        <TextField
+                    sx={{backgroundColor:"white"}}
+                  error={errorText3 == "Only characters are allowed"}
+                  helperText={errorText3}
+                  id="outlined-basic"
+                  label="Name"
+                  variant="standard"
+                  name="name"
+                  size="small"
+                  value={userData.first_name}
+                  onChange={handleOnChange}
+                />
         </div>
         <br />
         <div className="emailInput">
-        <Input placeholder="Enter Your Email"  error={errorText == "Invalid format"}
-                  helperText={errorText} name="email"  value={userData.email} sx={{backgroundColor:"white"}} onChange={handleOnChange} />
+     
+                <TextField
+                    sx={{backgroundColor:"white"}}
+                  error={errorText == "Invalid format"}
+                  helperText={errorText}
+                  id="outlined-basic"
+                  label="Email"
+                  variant="standard"
+                  name="email"
+                  size="small"
+                  value={userData.email}
+                  onChange={handleOnChange}
+                />
         </div>
         <br />
         <div className="emailInput">
-        <Input placeholder="Enter Your Password"
-        error={errorText2 == "Must be atleast 8 characters"}
-        helperText={errorText2} name="password" type="password" value={userData.password} sx={{backgroundColor:"white"}} onChange={handleOnChange} />
+        <TextField
+                    sx={{backgroundColor:"white"}}
+                    error={errorText2 == "Password must be atleast 8 digit"}
+                 helperText={errorText2}
+                  id="outlined-basic"
+                  label="Password"
+                  variant="standard"
+                  name="password"
+                  size="small"
+                  value={userData.password}
+                  onChange={handleOnChange}
+                />
         </div>
         <br />
         <div className="signupButton">

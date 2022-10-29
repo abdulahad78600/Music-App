@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Input,Button } from "@mui/material";
+import { TextField,Button } from "@mui/material";
 import "./Forget.css";
 
 const Forget=()=>
@@ -29,8 +29,18 @@ const Forget=()=>
         </div>
         <br />
         <div className="emailInput">
-        <Input error={errorText == "Invalid format"}
-                  helperText={errorText} placeholder="Enter Your Email"   name="email"  value={userData.email} sx={{backgroundColor:"white"}} onChange={handleOnChange} />
+        <TextField
+                  sx={{backgroundColor:"white"}}
+                  error={errorText == "Invalid Format"}
+                  helperText={errorText}
+                  id="outlined-basic"
+                  label="Email"
+                  variant="standard"
+                  name="email"
+                  size="small"
+                  value={userData.email}
+                  onChange={handleOnChange}
+                />
         </div>
         <br />
         <div className="signupButton">
