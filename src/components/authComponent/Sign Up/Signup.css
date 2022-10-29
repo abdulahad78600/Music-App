@@ -17,7 +17,7 @@
 }
 .heading
 {
-color:white
+color:black
 }
 .signupButton
 {
@@ -29,9 +29,9 @@ color:white
 {
     width: 207px;
 }
-  body {
+  /* body {
     background-image: url("../../../assets/images/background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-  }
+  } */
