@@ -15,7 +15,7 @@ const Forget=()=>
     return(
         <div className="main">
         <div className="mainContainer">
-         <h1 className="heading">Reset Password</h1>   
+         <h1 className="heading">Forget Password</h1>   
         </div>
         <br />
         <div className="emailInput">
