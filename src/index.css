@@ -19,3 +19,7 @@ code {
   margin-top: 0px !important;
 }
 
+input:-internal-autofill-selected 
+{
+  background-color: white !important;
+}

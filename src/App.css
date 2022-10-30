@@ -37,11 +37,3 @@
   }
 }
 
-input:-internal-autofill-selected 
-{
-  background-color: white !important;
-}
-.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root
- {
-  display: none !important;
-}
