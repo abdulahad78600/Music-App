@@ -4,3 +4,58 @@
     background-attachment: fixed;
     background-size: 100% 100%;
   } */
+  .email-h {
+    padding-right: 160px;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color:white;
+    height: 30px;
+    
+  }
+.passwordHeading
+{
+  padding-right: 140px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  color:white;
+  height: 30px;
+  
+}
+.loginInput
+{
+  width:200px;
+  height: 30px;
+  border-radius: 25px;
+  /* border: 1px solid black; */
+  padding-left: 10px;
+}
+.errorStyle
+{
+  color: red;
+  font-size: 12px;
+  width:200px;
+  float: left;
+  padding-top: 5px;
+}
+::placeholder
+{
+  padding-left: 5px !important;
+  color: grey;
+  font-size: 11px;
+}
+::name
+{
+  padding-left: 10px !important;
+}
+@media only screen and (max-width:500px){
+ .heading
+ {
+  font-size: 17px !important;
+ } 
+}

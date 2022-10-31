@@ -28,11 +28,13 @@ const Login=()=>
     return(
         <div className="main">
         <div className="mainContainer">
-         <h1 className="heading">Login to Account</h1>   
+         <h1 className="heading">LOGIN </h1>   
         </div>
         <br />
+        
         <div className="emailInput">
-        <TextField
+        <span className="email-h">Email</span>
+        {/* <TextField
                   sx={{backgroundColor:"white"}}
                   error={errorText == "Invalid Format"}
                   helperText={errorText}
@@ -43,11 +45,16 @@ const Login=()=>
                   size="small"
                   value={userData.email}
                   onChange={handleOnChange}
-                />
+                /> */}
+                <input  className="loginInput" placeholder="Enter your email" type="text" id="email" name="email"  value={userData.email}
+                  onChange={handleOnChange}  />
+                  
+                  <div className="errorStyle"> { errorText}</div>
         </div>
         <br />
         <div className="emailInput">
-        <TextField
+        <span className="passwordHeading">Password</span>
+        {/* <TextField
                   sx={{backgroundColor:"white"}}
                   id="standard-multiline-flexible"
                   label="Password"
@@ -56,8 +63,11 @@ const Login=()=>
                   variant="standard"
                   name="password"
                   type="password"
-                />
+                /> */}
+                 <input  className="loginInput" type="text" placeholder="Enter your password" id="password" name="password"  value={userData.password}
+                  onChange={handleOnChange}  />
         </div>
+        <br />
         <br />
         <div className="signupButton">
         <Button className="buttonStyle" onClick={handleOnChange} variant="contained">Login</Button>

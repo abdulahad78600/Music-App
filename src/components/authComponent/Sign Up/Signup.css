@@ -6,6 +6,8 @@
 .emailInput
 {
     display: flex;
+    flex-direction: column !important;
+    align-items: center;
     justify-content: center;
     height: 30;
 }
@@ -29,6 +31,7 @@ color:white
 .buttonStyle
 {
     width: 207px;
+    border-radius: 50px;
 }
   body {
     background-image: url("../../../assets/images/background.png");
