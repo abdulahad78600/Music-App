@@ -26,7 +26,6 @@ color:white
 {
     display: flex;
     justify-content: center !important;
-    /* width:207px;  */
 }
 .buttonStyle
 {
@@ -39,4 +38,12 @@ color:white
     background-attachment: fixed;
     background-size: 100% 100%;
   }
+  .signupInput
+{
+  width:200px;
+  height: 30px;
+  border-radius: 25px;
+  border: 1px solid black !important;
+  padding-left: 10px;
+}
  

@@ -49,55 +49,33 @@ const [userData, setUserData] = useState({
         <div className="mainContainer">
          <h1 className="heading">Create an Account</h1>   
         </div>
-        <div className="emailInput">
-        <TextField
-                    sx={{backgroundColor:"white"}}
-                  error={errorText3 == "Only characters are allowed"}
-                  helperText={errorText3}
-                  id="outlined-basic"
-                  label="Name"
-                  variant="standard"
-                  name="name"
-                  size="small"
-                  value={userData.first_name}
-                  onChange={handleOnChange}
-                />
+ <div className="emailInput">
+        <span className="email-h">Name</span>
+                <input  className="signupInput" placeholder="Enter your name" type="text" id="name" name="name"  value={userData.name}
+                  onChange={handleOnChange}  />
+                  
+                  <div className="errorStyle"> { errorText3}</div>
         </div>
         <br />
-        <div className="emailInput">
-     
-                <TextField
-                    sx={{backgroundColor:"white"}}
-                  error={errorText == "Invalid format"}
-                  helperText={errorText}
-                  id="outlined-basic"
-                  label="Email"
-                  variant="standard"
-                  name="email"
-                  size="small"
-                  value={userData.email}
-                  onChange={handleOnChange}
-                />
+         <div className="emailInput">
+        <span className="email-h">Email</span>
+                <input  className="signupInput" placeholder="Enter your email" type="text" id="email" name="email"  value={userData.email}
+                  onChange={handleOnChange}  />
+                  
+                  <div className="errorStyle"> { errorText}</div>
         </div>
         <br />
-        <div className="emailInput">
-        <TextField
-                    sx={{backgroundColor:"white"}}
-                    error={errorText2 == "Password must be atleast 8 digit"}
-                 helperText={errorText2}
-                  id="outlined-basic"
-                  label="Password"
-                  variant="standard"
-                  name="password"
-                  size="small"
-                  value={userData.password}
-                  onChange={handleOnChange}
-                />
+         <div className="emailInput">
+        <span className="email-h">Password</span>
+                <input  className="signupInput" placeholder="Enter your password" type="password" id="password" name="password"  value={userData.password}
+                  onChange={handleOnChange}  />
+                  <div className="errorStyle"> { errorText2}</div>
         </div>
+        <br />
         <br />
         <div className="signupButton">
         <Button className="buttonStyle" 
-          onClick={handleOnChange}  isLoading={isLoading} variant="contained">Login</Button>
+          onClick={handleOnChange}  isLoading={isLoading} variant="contained">Signup</Button>
         </div>
         </div >
     )

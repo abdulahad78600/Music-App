@@ -28,7 +28,7 @@ const Forget=()=>
          <h1 className="heading">Forget Password</h1>   
         </div>
         <br />
-        <div className="emailInput">
+        {/* <div className="emailInput">
         <TextField
                   sx={{backgroundColor:"white"}}
                   error={errorText == "Invalid Format"}
@@ -41,7 +41,15 @@ const Forget=()=>
                   value={userData.email}
                   onChange={handleOnChange}
                 />
+        </div> */}
+         <div className="emailInput">
+        <span className="email-h">Email</span>
+                <input  className="loginInput" placeholder="Enter your email" type="text" id="email" name="email"  value={userData.email}
+                  onChange={handleOnChange}  />
+                  
+                  <div className="errorStyle"> { errorText}</div>
         </div>
+        <br />
         <br />
         <div className="signupButton">
         <Button className="buttonStyle" onClick={handleOnChange} variant="contained">Reset</Button>

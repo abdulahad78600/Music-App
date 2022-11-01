@@ -1,11 +1,9 @@
-/* body {
-    background-image: url("../../../assets/images/background.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-  } */
+
   .email-h {
-    padding-right: 160px;
+    display: flex;
+    width: 200px;
+    display: flex;
+    align-items: flex-start;
     font-family: "Lato";
     font-style: normal;
     font-weight: 400;
@@ -14,25 +12,13 @@
     color:white;
     height: 30px;
     
-  }
-.passwordHeading
-{
-  padding-right: 140px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 18px;
-  color:white;
-  height: 30px;
-  
-}
+  } 
 .loginInput
 {
   width:200px;
   height: 30px;
   border-radius: 25px;
-  /* border: 1px solid black; */
+  border: 1px solid black !important;
   padding-left: 10px;
 }
 .errorStyle
@@ -49,6 +35,8 @@
   color: grey;
   font-size: 11px;
 }
+input{border: 0; outline: 0;}
+
 ::name
 {
   padding-left: 10px !important;
