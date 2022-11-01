@@ -4,9 +4,9 @@ import './App.css';
 
 function App() {
   return (
-    // <Reset></Reset>
+    <Reset></Reset>
     // <Signup></Signup>
-    <Login></Login>
+    // <Login></Login>
     // <Forget></Forget>
   );
 }

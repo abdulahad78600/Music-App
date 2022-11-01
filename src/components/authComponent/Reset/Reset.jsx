@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { Button } from "@mui/material";
 
 const Reset = () => {
   const passwordRegex = /^[a-zA-Z 1-9-0 ~`! ; : @#$%^&*]{8,}$/;
@@ -28,7 +28,7 @@ const Reset = () => {
       <br />
 
       <div className="emailInput">
-        <span className="email-h">Code</span>
+        <span className="lableStyle">Code</span>
         <input
           className="loginInput"
           placeholder="Enter your Code"
@@ -42,7 +42,7 @@ const Reset = () => {
       <br />
 
       <div className="emailInput">
-        <span className="email-h">New Password</span>
+        <span className="lableStyle">New Password</span>
         <input
           className="loginInput"
           placeholder="Enter your new Password"
@@ -52,6 +52,7 @@ const Reset = () => {
           value={userData.newPassword}
           onChange={handleOnChange}
         />
+        <div className="errorStyle"> {errorText2}</div>
       </div>
       <br />
       <br />
