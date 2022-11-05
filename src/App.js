@@ -4,10 +4,10 @@ import './App.css';
 
 function App() {
   return (
-    <Reset></Reset>
-    // <Signup></Signup>
-    // <Login></Login>
+    // <Reset></Reset>
+    <Login></Login>
     // <Forget></Forget>
+    // <Signup></Signup> 
   );
 }
 

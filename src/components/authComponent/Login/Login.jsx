@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../../../utils/Firebase'
 import "./Login.css";
 
 const Login = () => {
+
   const emailRegex =
     /^([+\w-]+(?:\.[+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+  const signIn=()=>
+  {
+      auth.signINWithEmailAndPassword(userData.email,userData.password).then(res=>{
+        console.log("=====>result" ,res);        
+      })
+  }
   const [errorText, setErrorText] = useState("");
   const handleOnChange = (event) => {
     const { name, value } = event.target;

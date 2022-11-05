@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import {  Button } from "@mui/material";
+ import {useHistory} from "react-router-dom"
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../../../utils/Firebase'
 import "./Signup.css";
 
 const Signup = () => {
@@ -16,6 +19,15 @@ const Signup = () => {
     email: "",
     password: "",
   });
+
+  const signUp=()=>
+  {
+      auth.createUserWithEmailAndPassword(userData.email,userData.password).then(res=>{
+        console.log( res);        
+      }).catch((error)=>{
+        console.log("--------", error)
+      })
+  }
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
@@ -95,7 +107,7 @@ const Signup = () => {
       <div className="signupButton">
         <Button
           className="buttonStyle"
-          onClick={handleOnChange}
+          onClick={signUp}
           isLoading={isLoading}
           variant="contained"
         >
