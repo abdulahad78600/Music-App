@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import {auth} from '../../../utils/Firebase'
+import { setToken } from "../../../utils/LocalStorage"; 
+import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -8,18 +11,21 @@ const Login = () => {
   const emailRegex =
     /^([+\w-]+(?:\.[+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
   const [userData, setUserData] = useState({
-    email: "",
+    email: "",  
     password: "",
   });
+  const navigates = useNavigate();
   const signIn=()=>
   {
       auth.signInWithEmailAndPassword(userData.email,userData.password).then(res=>{
-        console.log( res);        
+        console.log("==========res" ,res )
+        setToken(res.user.access_token);  
+        navigates("/dashboard");
       }).catch((error)=>{
         console.log("--------", error)
       })
   }
-  const [errorText, setErrorText] = useState("");
+  const [errorText, setErrorText] = useState("");   
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
