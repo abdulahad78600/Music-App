@@ -40,8 +40,9 @@ const Forget = () => {
 
         <div className="errorStyle"> {errorText}</div>
       </div>
-      <br />
-      <br />
+      <div>
+        <br />
+      </div>
       <div className="signupButton">
         <Button
           className="buttonStyle"

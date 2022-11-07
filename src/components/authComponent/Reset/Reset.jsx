@@ -54,8 +54,9 @@ const Reset = () => {
         />
         <div className="errorStyle"> {errorText2}</div>
       </div>
-      <br />
-      <br />
+      <div>
+        <br />
+      </div>
       <div className="signupButton">
         <Button
           className="buttonStyle"

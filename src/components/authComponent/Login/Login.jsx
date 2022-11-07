@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../../../utils/Firebase'
 import "./Login.css";
 
@@ -14,8 +13,10 @@ const Login = () => {
   });
   const signIn=()=>
   {
-      auth.signINWithEmailAndPassword(userData.email,userData.password).then(res=>{
-        console.log("=====>result" ,res);        
+      auth.signInWithEmailAndPassword(userData.email,userData.password).then(res=>{
+        console.log( res);        
+      }).catch((error)=>{
+        console.log("--------", error)
       })
   }
   const [errorText, setErrorText] = useState("");
@@ -67,12 +68,13 @@ const Login = () => {
           onChange={handleOnChange}
         />
       </div>
-      <br />
-      <br />
+      <div>
+        <br />
+      </div>
       <div className="signupButton">
         <Button
           className="buttonStyle"
-          onClick={handleOnChange}
+          onClick={signIn}
           variant="contained"
         >
           Login

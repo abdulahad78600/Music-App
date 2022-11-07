@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {  Button } from "@mui/material";
  import {useHistory} from "react-router-dom"
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../../../utils/Firebase'
 import "./Signup.css";
 
@@ -102,8 +101,9 @@ const Signup = () => {
         />
         <div className="errorStyle"> {errorText2}</div>
       </div>
-      <br />
-      <br />
+      <div>
+        <br />
+      </div>
       <div className="signupButton">
         <Button
           className="buttonStyle"
