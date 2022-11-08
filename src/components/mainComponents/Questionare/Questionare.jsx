@@ -141,12 +141,13 @@ const Questionare=()=>
            name="consert"
          />
          </div>
-        <br /> <br />
+        <br /> 
           <div className="emailInput">
-         <span className="mediaStyle">What is your favorite style of music?</span>
+         <span className="mediaStyle">What concerts have you attended in the last 12 months?
+</span>
          <input
            className="questionInput"
-           placeholder="What is your favorite style of music?"
+           placeholder="What concerts have you attended in the last 12 months?"
            type="text"
            id="music"
            name="music"
@@ -154,17 +155,47 @@ const Questionare=()=>
          </div>
         <br /> <br />
           <div className="emailInput">
-         <span className="mediaStyle">What is your favorite style of music?</span>
+         <span className="mediaStyle">How do you typically listen to music (Spotify, Amazon Music, YouTube, SoundCloud,etc.)?
+</span>
          <input
            className="questionInput"
-           placeholder="What is your favorite style of music?"
+           placeholder="How do you typically listen to music (Spotify, Amazon Music, YouTube, SoundCloud,etc.)?
+           "
            type="text"
            id="music"
            name="music"
          />
          </div>
         <br />
+        <br />
+          <div className="emailInput">
+         <span className="mediaStyle">How often do you listen to music?</span>
+         <input
+           className="questionInput"
+           placeholder="How often do you listen to music?"
+           type="text"
+           id="consert"
+           name="consert"
+         />
          </div>
+        <br /> 
+        <br />
+          <div className="emailInput">
+         <span className="mediaStyle">
+How many hours per week do you listen to music?
+</span>
+         <input
+           className="questionInput"
+           placeholder="
+           How many hours per week do you listen to music?
+            "
+           type="text"
+           id="consert"
+           name="consert"
+         />
+         </div>
+         </div>
+
          
     )
 }
