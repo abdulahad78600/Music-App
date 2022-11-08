@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import {  Button } from "@mui/material";
+import {auth} from '../../../utils/Firebase'
+import { useNavigate } from "react-router-dom";
 import "./Forget.css";
 
 const Forget = () => {
   const [userData, setUserData] = useState({
     email: "",
   });
+  const navigates = useNavigate();
+  const forget=()=>
+  {
+      auth.sendPasswordResetEmail(userData.email).then(res=>{
+        console.log("==========res" ,res )
+        navigates("/reset");
+      }).catch((error)=>{
+        console.log("--------", error)
+      })
+  }
   const emailRegex =
     /^([+\w-]+(?:\.[+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
   const [errorText, setErrorText] = useState("");
@@ -23,7 +35,7 @@ const Forget = () => {
   return (
     <div className="main">
       <div className="mainContainer">
-        <h1 className="heading">Reset</h1>
+        <h1 className="heading">Forget</h1>
       </div>
       <br />
       <div className="emailInput">
@@ -46,7 +58,7 @@ const Forget = () => {
       <div className="signupButton">
         <Button
           className="buttonStyle"
-          onClick={handleOnChange}
+          onClick={forget   }
           variant="contained"
         >
           Send Email

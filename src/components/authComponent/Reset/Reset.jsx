@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
+import {auth} from '../../../utils/Firebase'
+import { useNavigate } from "react-router-dom";
 
 const Reset = () => {
   const passwordRegex = /^[a-zA-Z 1-9-0 ~`! ; : @#$%^&*]{8,}$/;
@@ -7,6 +9,16 @@ const Reset = () => {
     code: "",
     newPassword: "",
   });
+  const navigates = useNavigate();
+  const resetPassword=()=>
+  {
+      auth.sendPasswordResetEmail(userData.email,userData.code).then(res=>{
+        console.log("==========res" ,res )
+        navigates("/login");
+      }).catch((error)=>{
+        console.log("--------", error)
+      })
+  }
   const [errorText2, seterrorText2] = useState("");
 
   const handleOnChange = (event) => {
@@ -60,7 +72,7 @@ const Reset = () => {
       <div className="signupButton">
         <Button
           className="buttonStyle"
-          onClick={handleOnChange}
+          onClick={resetPassword}
           variant="contained"
         >
           Reset

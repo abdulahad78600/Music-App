@@ -1,7 +1,9 @@
 import "./Dashboard.css";
-import { deleteToken } from "../../utils/LocalStorage";
+import { deleteToken } from "../../../utils/LocalStorage";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import "./Dashboard.css";
+
 const Dashboard = () => {
 const navigates = useNavigate();
   const logout = () => {

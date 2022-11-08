@@ -1,2 +1,3 @@
 import Dashboard from "./Dashboard";
-export default Dashboard;
+import Questionare from "./Questionare";
+export { Dashboard,Questionare};
