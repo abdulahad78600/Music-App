@@ -21,3 +21,34 @@
     justify-content: center !important;
     padding-bottom: 15px;
 }
+.inputRange
+{
+  color: white ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.range
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.textColor
+{
+  color:white;
+  padding-right:30px;
+  width: 80px;
+}
+.rangeItems
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.slider
+{
+  width:100%;
+}
