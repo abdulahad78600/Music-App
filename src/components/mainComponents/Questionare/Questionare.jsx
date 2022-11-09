@@ -1,45 +1,68 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
+import { auth } from '../../../utils/Firebase'
+import { getAuth } from "firebase/auth";
 import "./Questionare.css";
 
 const Questionare = () => {
     const [userData, setUserData] = useState({
         name: "",
         gender: "",
-        ethenicity: "",
-        birthdate: "",
+        ethnicity: "",
+        birth_date: "",
         email: "",
-        cellphone: "",
-        media: "",
-        bornCity: "",
-        college: "",
-        collegeYear: "",
-        music: "",
-        consert: "",
-        consertMonth: "",
-        musicType: "",
-        lisiten: "",
-        musicTime: ""
+        phone: "",
+        social_media_apps: "",
+        city_of_birth: "",
+        current_city: "",
+        current_college_name: "",
+        current_college_year: "",
+        favorite_music_app: "",
+        attend_consert: "",
+        concerts_attended_last_year: "",
+        music_listening_frequency: "",
+        frequency_per_week: "",
+        favorite_sneakers_brand: "",
+        favorite_clothing_brand: "",
+        rank_genres: {}
     });
     const [music, setmusic] = useState({
-        RB:"",
-        Hiphop :"",
-        Pop:"", 
-        Rock:"",                                
-        Latin:"",            
-        Country:"",           
-        EDM :""          
-        
+        RB: "",
+        hip_hop: "",
+        pop: "",
+        rock: "",
+        latin: "",
+        country: "",
+        edm: ""
+
     });
+   
+
     const handleOnChange = (event) => {
         const { name, value } = event.target;
         setUserData({ ...userData, [name]: value });
         setmusic({ ...music, [name]: value });
     }
+
+    const handleOnChangeMusic = (event) => {
+        const { name, value } = event.target;
+        setmusic({ ...music, [name]: value });
+    }
+
     const Submit = () => {
-        console.log("respnse", userData)
+        console.log("respnse", music);
+        console.log("========", userData)
+        const auth = getAuth();
+        const user1 = auth.currentUser;
+        console.log("-------user", user1.auth.currentUser.uid);
+        const data = { ...userData, rank_genres: music , user_id:'' }
+        const JsonData = JSON.stringify(data)
+        console.log("-----JSON DATA" , JsonData);
+        
+        
     }
    
+
     return (
         <div className="mainContainerQuestion">
             <div className="emailInput">
@@ -73,11 +96,11 @@ const Questionare = () => {
                 <span className="lableStyle">Ethenicity</span>
                 <input
                     className="questionInput"
-                    placeholder="Enter your ethenicity"
+                    placeholder="Enter your ethnicity"
                     type="text"
-                    id="ethenicity"
-                    name="ethenicity"
-                    value={userData.ethenicity}
+                    id="ethnicity"
+                    name="ethnicity"
+                    value={userData.ethnicity}
                     onChange={handleOnChange}
 
                 />
@@ -87,11 +110,11 @@ const Questionare = () => {
                 <span className="lableStyle">Birthdate</span>
                 <input
                     className="questionInput"
-                    placeholder="Enter your birthdate"
+                    placeholder="Enter your birth_date"
                     type="text"
-                    id="birthdate"
-                    name="birthdate"
-                    value={userData.birthdate}
+                    id="birth_date"
+                    name="birth_date"
+                    value={userData.birth_date}
                     onChange={handleOnChange}
                 />
             </div>
@@ -115,23 +138,23 @@ const Questionare = () => {
                     className="questionInput"
                     placeholder="Enter your cellphonenumber"
                     type="text"
-                    id="cellphone"
-                    name="cellphone"
-                    value={userData.cellphone}
+                    id="phone"
+                    name="phone"
+                    value={userData.phone}
                     onChange={handleOnChange}
                 />
             </div>
             <br />
             <div className="emailInput">
-                <span className="mediaStyle">Which social media apps do you regularly use?</span>
+                <span className="mediaStyle">Which social social_media_apps apps do you regularly use?</span>
                 <br />
                 <input
                     className="questionInput"
-                    placeholder="Which social media apps do you regularly use?"
+                    placeholder="Which social social_media_apps apps do you regularly use?"
                     type="text"
-                    id="media"
-                    name="media"
-                    value={userData.media}
+                    id="social_media_apps"
+                    name="social_media_apps"
+                    value={userData.social_media_apps}
                     onChange={handleOnChange}
                 />
             </div>
@@ -143,9 +166,23 @@ const Questionare = () => {
                     className="questionInput"
                     placeholder="What city/state were you born in?"
                     type="text"
-                    id="bornCity"
-                    name="bornCity"
-                    value={userData.bornCity}
+                    id="city_of_birth"
+                    name="city_of_birth"
+                    value={userData.city_of_birth}
+                    onChange={handleOnChange}
+                />
+            </div>
+            <br />
+            <div className="emailInput">
+                <span className="mediaStyle">What city/state do you live in now?</span>
+                <br />
+                <input
+                    className="questionInput"
+                    placeholder="What city/state were you born in?"
+                    type="text"
+                    id="current_city"
+                    name="current_city"
+                    value={userData.current_city}
                     onChange={handleOnChange}
                 />
             </div>
@@ -156,9 +193,9 @@ const Questionare = () => {
                     className="questionInput"
                     placeholder="What college are you currently attending?"
                     type="text"
-                    id="college"
-                    name="college"
-                    value={userData.college}
+                    id="current_college_name"
+                    name="current_college_name"
+                    value={userData.current_college_name}
                     onChange={handleOnChange}
                 />
             </div>
@@ -170,9 +207,9 @@ const Questionare = () => {
                     className="questionInput"
                     placeholder="What year of college are you currently in?  "
                     type="text"
-                    id="collegeYear"
-                    name="collegeYear"
-                    value={userData.collegeYear}
+                    id="current_college_year"
+                    name="current_college_year"
+                    value={userData.current_college_year}
                     onChange={handleOnChange}
                 />
             </div>
@@ -184,173 +221,187 @@ const Questionare = () => {
                     className="questionInput"
                     placeholder="What is your favorite style of music?"
                     type="text"
-                    id="music"
-                    name="music"
-                    value={userData.music}
+                    id="favorite_music_app"
+                    name="favorite_music_app"
+                    value={userData.favorite_music_app}
                     onChange={handleOnChange}
                 />
             </div>
-            < br/>
+            < br />
             <div className="range">
                 <label className="inputRange" for="points">Rank these genres from one to eight (1= I don’t like it at all / 8 = I love it):
-:</label>
-<br />
+                    :</label>
+                <br />
+            </div>
+            <br />
+            <div className="rangeItems">
+                <div className="textColor" >
+                    R&B
                 </div>
-                    <br />
-                    <div className="rangeItems">
-                    <div className="textColor" >
-                        R&B
-                    </div>
-                    <div>
-                    <input className="slider" type="range" id="points" name="RB"  value={music.RB}
-                    onChange={handleOnChange} min="0" max="8" />
-                    </div>
-                    <br />
-                    <div className="rangeItems">
+                <div>
+                    <input className="slider" type="range" id="points" name="RB" value={music.RB}
+                        onChange={handleOnChangeMusic} min="0" max="8" />
+                </div>
+                <br />
+                <div className="rangeItems">
                     <div className="textColor" >
                         Hip Hop
                     </div>
                     <div>
-                    <input className="slider" type="range" id="points" name="Hiphop"  value={music.Hiphop}
-                    onChange={handleOnChange} min="0" max="8" />
+                        <input className="slider" type="range" id="points" name="hip_hop" value={music.hip_hop}
+                            onChange={handleOnChangeMusic} min="0" max="8" />
                     </div>
 
-                    </div>   <br />
-                    <div className="rangeItems">
+                </div>   <br />
+                <div className="rangeItems">
                     <div className="textColor" >
-                        Pop
+                        pop
                     </div>
                     <div>
-                 <input className="slider" type="range" id="points" name="Pop" min="0" max="8" value={music.Pop}
-                    onChange={handleOnChange} />
+                        <input className="slider" type="range" id="points" name="pop" min="0" max="8" value={music.pop}
+                            onChange={handleOnChangeMusic} />
                     </div>
 
-                    </div>   <br />
-                    <div className="rangeItems">
+                </div>   <br />
+                <div className="rangeItems">
                     <div className="textColor" >
-                        Rock
+                        rock
                     </div>
                     <div>
-                 <input className="slider" type="range" id="points" name="Rock" min="0" max="8" value={music.Rock}
-                    onChange={handleOnChange} />
+                        <input className="slider" type="range" id="points" name="rock" min="0" max="8" value={music.rock}
+                            onChange={handleOnChangeMusic} />
                     </div>
 
-                    </div>   <br />
-                    <div className="rangeItems">
+                </div>   <br />
+                <div className="rangeItems">
                     <div className="textColor" >
-                        Latin
+                        latin
                     </div>
                     <div>
-                 <input className="slider" type="range" id="points" name="Latin" min="0" max="8" value={music.Latin}
-                    onChange={handleOnChange} />
+                        <input className="slider" type="range" id="points" name="latin" min="0" max="8" value={music.latin}
+                            onChange={handleOnChangeMusic} />
                     </div>
 
-                    </div>   <br />
-                    <div className="rangeItems">
+                </div>   <br />
+                <div className="rangeItems">
                     <div className="textColor" >
                         Countrty
                     </div>
                     <div>
-                 <input className="slider" type="range" id="points" name="Country" min="0" max="8" value={music.Country}
-                    onChange={handleOnChange} />
+                        <input className="slider" type="range" id="points" name="country" min="0" max="8" value={music.country}
+                            onChange={handleOnChangeMusic} />
                     </div>
 
-                    </div>   <br />
-                    <div className="rangeItems">
+                </div>   <br />
+                <div className="rangeItems">
                     <div className="textColor" >
-                        EDM
+                        edm
                     </div>
                     <div>
-                 <input className="slider" type="range" id="points" name="EDM" min="0" max="8" value={music.EDM}
-                    onChange={handleOnChange} />
+                        <input className="slider" type="range" id="points" name="edm" min="0" max="8" value={music.edm}
+                            onChange={handleOnChangeMusic} />
                     </div>
 
-                    </div>
-                    </div>
-                    <div className="emailInput">
-                        <span className="mediaStyle">Do you go to concerts?</span>
-                        <input
-                            className="questionInput"
-                            placeholder="Do you go to concerts?"
-                            type="text"
-                            id="consert"
-                            name="consert"
-                            value={userData.consert}
-                            onChange={handleOnChange}
-                        />
-                    </div>
-                    <br />
-                    <div className="emailInput">
-                        <span className="mediaStyle">What concerts have you attended in the last 12 months?
-                        </span>
-                        <input
-                            className="questionInput"
-                            placeholder="What concerts have you attended in the last 12 months?"
-                            type="text"
-                            id="consertMonth"
-                            name="consertMonth"
-                            value={userData.consertMonth}
-                            onChange={handleOnChange}
-                        />
-                    </div>
-                    <br /> <br />
-                    <div className="emailInput">
-                        <span className="mediaStyle">How do you typically listen to music (Spotify, Amazon Music, YouTube, SoundCloud,etc.)?
-                        </span>
-                        <input
-                            className="questionInput"
-                            placeholder="How do you typically listen to music (Spotify, Amazon Music, YouTube, SoundCloud,etc.)?
-           "
-                            type="text"
-                            id="musicType"
-                            name="musicType"
-                            value={userData.musicType}
-                            onChange={handleOnChange}
-                        />
-                    </div>
-                    <br />
-                    <br />
-                    <div className="emailInput">
-                        <span className="mediaStyle">How often do you listen to music?</span>
-                        <input
-                            className="questionInput"
-                            placeholder="How often do you listen to music?"
-                            type="text"
-                            id="lisiten"
-                            name="lisiten"
-                            value={userData.lisiten}
-                            onChange={handleOnChange}
-                        />
-                    </div>
-                    <br />
-                    <br />
-                    <div className="emailInput">
-                        <span className="mediaStyle">
-                            How many hours per week do you listen to music?
-                        </span>
-                        <input
-                            className="questionInput"
-                            placeholder="
+                </div>
+            </div>
+            <div className="emailInput">
+                <span className="mediaStyle">Do you go to concerts?</span>
+                <input
+                    className="questionInput"
+                    placeholder="Do you go to concerts?"
+                    type="text"
+                    id=" attend_consert"
+                    name="attend_consert"
+                    value={userData.attend_consert}
+                    onChange={handleOnChange}
+                />
+            </div>
+            <br />
+            <div className="emailInput">
+                <span className="mediaStyle">What concerts have you attended in the last 12 months?
+                </span>
+                <input
+                    className="questionInput"
+                    placeholder="What concerts have you attended in the last 12 months?"
+                    type="text"
+                    id="concerts_attended_last_year"
+                    nam="concerts_attended_last_year"
+                    value={userData.concerts_attended_last_year}
+                    onChange={handleOnChange}
+                />
+            </div>
+            <br />
+            <div className="emailInput">
+                <span className="mediaStyle">How often do you listen to music?</span>
+                <input
+                    className="questionInput"
+                    placeholder="How often do you listen to music?"
+                    type="text"
+                    id="music_listening_frequency"
+                    name="music_listening_frequency"
+                    value={userData.music_listening_frequency}
+                    onChange={handleOnChange}
+                />
+            </div>
+            <br />
+            <br />
+            <div className="emailInput">
+                <span className="mediaStyle">
+                    How many hours per week do you listen to music?
+                </span>
+                <input
+                    className="questionInput"
+                    placeholder="
            How many hours per week do you listen to music?
             "
-                            type="text"
-                            id="musicTime"
-                            name="musicTime"
-                            value={userData.musicTime}
-                            onChange={handleOnChange}
-                        />
-                    </div>
-                    <br />
-                    <div className="questionButton">
-                        <Button
-                            className="buttonStyle"
-                            variant="contained"
-                            onClick={onsubmit}
-                        >
-                            Submit
-                        </Button>
-                    </div>
-                </div>  
-                )
+                    type="text"
+                    id="frequency_per_week"
+                    name="frequency_per_week"
+                    value={userData.frequency_per_week}
+                    onChange={handleOnChange}
+                />
+            </div>
+            <br />
+            <div className="emailInput">
+                <span className="mediaStyle">
+                    What brand of sneakers do you like??
+                </span>
+                <input
+                    className="questionInput"
+                    placeholder="What brand of sneakers do you like??"
+                    type="text"
+                    id="favorite_sneakers_brand"
+                    name="favorite_sneakers_brand"
+                    value={userData.favorite_sneakers_brand}
+                    onChange={handleOnChange}
+                />
+            </div>
+            <br />
+            <div className="emailInput">
+                <span className="mediaStyle">
+                    What brand of clothing do you like??
+                </span>
+                <input
+                    className="questionInput"
+                    placeholder="What brand of clothing do you like??"
+                    type="text"
+                    id="favorite_clothing_brand"
+                    name="favorite_clothing_brand"
+                    value={userData.favorite_clothing_brand}
+                    onChange={handleOnChange}
+                />
+            </div>
+            <br />
+            <div className="questionButton">
+                <Button
+                    className="buttonStyle"
+                    variant="contained"
+                    onClick={Submit}
+                >
+                    Submit
+                </Button>
+            </div>
+        </div>
+    )
 }
-                export default Questionare;
+export default Questionare;
