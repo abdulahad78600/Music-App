@@ -1,6 +1,6 @@
 import { Reset, Login, Signup, Forget } from './components/authComponent';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {Dashboard,Questionare} from './components/mainComponents';
+import {Dashboard,Questionare,MusicPlay} from './components/mainComponents';
 import PrivateRoute from './routes/PrivateRouting';
 import PublicRoute from './routes/PublicRouting';
 import './App.css';
@@ -60,6 +60,15 @@ function App() {
             <PublicRoute restricted>
               {" "}
               <Questionare />
+            </PublicRoute>
+          }
+        />
+         <Route
+          path="/musicplay"
+          element={
+            <PublicRoute restricted>
+              {" "}
+              <MusicPlay />
             </PublicRoute>
           }
         />
