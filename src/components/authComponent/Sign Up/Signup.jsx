@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {  Button } from "@mui/material";
  import {useHistory} from "react-router-dom"
 import {auth} from '../../../utils/Firebase'
+import Logo from "../../../assets/images/logo.png"
 import "./Signup.css";
 
 const Signup = () => {
@@ -55,8 +56,13 @@ const Signup = () => {
 
   return (
     <div className="main">
-      <div className="mainContainer">
-        <h1 className="heading">Create an Account</h1>
+       <div className="mainContainer">
+       <div className="logoContainer"> 
+      <img className="logo" src={Logo} />
+      </div>
+      <div>
+        <h1 className="heading">Create an account? </h1>
+        </div>
       </div>
       <div className="emailInput">
         <span className="lableStyle">Name</span>

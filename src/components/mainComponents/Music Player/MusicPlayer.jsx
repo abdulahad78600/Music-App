@@ -5,6 +5,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import PauseIcon from '@mui/icons-material/Pause';
+import Navbar from "../../commonComnents";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import WaveSurfer from "wavesurfer.js";

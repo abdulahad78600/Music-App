@@ -1,23 +1,28 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import {auth} from '../../../utils/Firebase'
-import { useNavigate } from "react-router-dom";
+import { auth } from '../../../utils/Firebase'
+import { useNavigate, useLocation } from "react-router-dom";
+import Logo from "../../../assets/images/logo.png"
 
-const Reset = () => {
+
+const Reset = ({ }) => {
+  const location = useLocation();
   const passwordRegex = /^[a-zA-Z 1-9-0 ~`! ; : @#$%^&*]{8,}$/;
   const [userData, setUserData] = useState({
-    code: "",
     newPassword: "",
   });
   const navigates = useNavigate();
-  const resetPassword=()=>
-  {
-      auth.sendPasswordResetEmail(userData.email,userData.code).then(res=>{
-        console.log("==========res" ,res )
-        navigates("/login");
-      }).catch((error)=>{
-        console.log("--------", error)
-      })
+
+  const resetPassword = async () => {
+
+    const queryParams = new URLSearchParams(location.search)
+    const oobCode = queryParams.get("oobCode");
+    auth.confirmPasswordReset(oobCode, userData.newPassword).then(res => {
+      navigates("/login")
+    }).catch((error) => {
+      console.log("--------", error)
+    })
+
   }
   const [errorText2, seterrorText2] = useState("");
 
@@ -35,24 +40,14 @@ const Reset = () => {
   return (
     <div className="main">
       <div className="mainContainer">
-        <h1 className="heading">Reset Password</h1>
+       <div className="logoContainer"> 
+      <img className="logo" src={Logo} />
+      </div>
+      <div>
+        <h1 className="heading">Reset </h1>
+        </div>
       </div>
       <br />
-
-      <div className="emailInput">
-        <span className="lableStyle">Code</span>
-        <input
-          className="loginInput"
-          placeholder="Enter your Code"
-          type="text"
-          id="code"
-          name="code"
-          value={userData.code}
-          onChange={handleOnChange}
-        />
-      </div>
-      <br />
-
       <div className="emailInput">
         <span className="lableStyle">New Password</span>
         <input
