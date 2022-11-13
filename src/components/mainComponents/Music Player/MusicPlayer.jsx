@@ -3,18 +3,18 @@ import musicImage from "../../../assets/images/musicImage.png"
 import Music from "../../../assets/images/music.mp3"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-// import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import PauseIcon from '@mui/icons-material/Pause';
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import WaveSurfer from "wavesurfer.js";
-// import convertSeconds from "convert-seconds";
 import "./MusicPlayer.css";
 
 class MusicPlay extends Component {
   state = {
-    playing: false,
+    playing: true,
   };
+
 
   componentDidMount() {
     const track = document.querySelector("#track");
@@ -25,10 +25,10 @@ class MusicPlay extends Component {
       container: "#waveform",
       backend: "WebAudio",
       height: 80,
-      progressColor: "#EFEFEF",
+      progressColor: "yellow",
       responsive: true,
-      waveColor: "#454545",
-      cursorColor: "transparent",   
+      waveColor: "grey",
+      cursorColor: "transparent",
       barGap: 2.5,
       barRadius: 5,
     });
@@ -61,7 +61,12 @@ class MusicPlay extends Component {
           <div className="playerControls">
             <VolumeUpIcon />
             <SkipPreviousIcon className="skipPrevButton" />
-            <PlayArrowIcon onClick={this.handlePlay} className="playButton" />
+
+            {this.state.playing ? (
+              <PlayArrowIcon onClick={this.handlePlay} className="playButton" />
+            ) : (
+              <PauseIcon onClick={this.handlePlay} className="playButton" />
+            )}
             <SkipNextIcon className="skipNextButton" />
             <StarBorderIcon className="starButton" />
           </div>
