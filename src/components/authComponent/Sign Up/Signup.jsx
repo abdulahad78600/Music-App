@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import {  Button } from "@mui/material";
- import {useHistory} from "react-router-dom"
-import {auth} from '../../../utils/Firebase'
-import Logo from "../../../assets/images/logo.png"
+import { Button } from "@mui/material";
+import { auth } from "../../../utils/Firebase";
+import { useNavigate } from "react-router-dom";
+import { postAPI } from "../../../utils/api";
+import Logo from "../../../assets/images/logo.png";
 import "./Signup.css";
 
 const Signup = () => {
+  const navigates = useNavigate();
   const emailRegex =
     /^([+\w-]+(?:\.[+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
   const nameRegex = /^[a-zA-Z-\s/]+$/;
@@ -16,18 +18,34 @@ const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({
     name: "",
+    phone: "",
     email: "",
     password: "",
   });
 
-  const signUp=()=>
-  {
-      auth.createUserWithEmailAndPassword(userData.email,userData.password).then(res=>{
-        console.log( res);        
-      }).catch((error)=>{
-        console.log("--------", error)
+  const signUp = () => {
+    auth
+      .createUserWithEmailAndPassword(userData.email, userData.password)
+      .then((res) => {
+        saveDataOnFirebase(res.user.uid);
       })
-  }
+      .catch((error) => {
+        console.log("--------", error);
+      });
+  };
+
+  const saveDataOnFirebase = async (id) => {
+    const response = await postAPI(`updateUserNamePhone?id=${id}`, {
+      name: userData.name,
+      phone: userData.phone,
+    });
+    if (response.data) {
+      navigates("/login");
+    } else {
+      console.log("--------error");
+    }
+  };
+
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
@@ -56,12 +74,12 @@ const Signup = () => {
 
   return (
     <div className="main">
-       <div className="mainContainer">
-       <div className="logoContainer"> 
-      <img className="logo" src={Logo} />
-      </div>
-      <div>
-        <h1 className="heading">Create an account? </h1>
+      <div className="mainContainer">
+        <div className="logoContainer">
+          <img className="logo" src={Logo} />
+        </div>
+        <div>
+          <h1 className="heading">Create an account? </h1>
         </div>
       </div>
       <div className="emailInput">
@@ -73,6 +91,21 @@ const Signup = () => {
           id="name"
           name="name"
           value={userData.name}
+          onChange={handleOnChange}
+        />
+
+        <div className="errorStyle"> {errorText3}</div>
+      </div>
+      <br />
+      <div className="emailInput">
+        <span className="lableStyle">Phone</span>
+        <input
+          className="signupInput"
+          placeholder="Enter your phone number"
+          type="text"
+          id="phone"
+          name="phone"
+          value={userData.phone}
           onChange={handleOnChange}
         />
 

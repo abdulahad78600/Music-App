@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import {auth} from '../../../utils/Firebase'
 import { setToken } from "../../../utils/LocalStorage"; 
-import { Navigate } from "react-router-dom"
-import Logo from "../../../assets/images/logo.png"
 import { useNavigate } from "react-router-dom";
+import Logo from "../../../assets/images/logo.png"
 import "./Login.css";
 
 const Login = () => {
