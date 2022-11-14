@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { auth } from '../../../utils/Firebase'
-import { getAuth } from "firebase/auth";
+import { getAuth  } from "firebase/auth";
+import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import firebase from 'firebase/compat/app';
 import "./Questionare.css";
 
 const Questionare = () => {
@@ -26,6 +28,7 @@ const Questionare = () => {
         favorite_clothing_brand: "",
         rank_genres: {}
     });
+    const navigates = useNavigate();
     const [music, setmusic] = useState({
         RB: "",
         hip_hop: "",
@@ -49,17 +52,14 @@ const Questionare = () => {
         setmusic({ ...music, [name]: value });
     }
 
-    const Submit = () => {
-        console.log("respnse", music);
-        console.log("========", userData)
+    const Submit = async () => {
+        const db =firebase.firestore();
         const auth = getAuth();
-        const user1 = auth.currentUser;
-        console.log("-------user", user1.auth.currentUser.uid);
-        const data = { ...userData, rank_genres: music , user_id:'' }
-        const JsonData = JSON.stringify(data)
-        console.log("-----JSON DATA" , JsonData);
-        
-        
+        const user = auth.currentUser;
+        const data = { ...userData, rank_genres: music , user_id:user.auth.currentUser.uid }
+        const res = await db.collection('survey_response').add(data);
+        navigates("/musicplay");
+         
     }
    
 
@@ -325,7 +325,7 @@ const Questionare = () => {
                     placeholder="What concerts have you attended in the last 12 months?"
                     type="text"
                     id="concerts_attended_last_year"
-                    nam="concerts_attended_last_year"
+                    name="concerts_attended_last_year"
                     value={userData.concerts_attended_last_year}
                     onChange={handleOnChange}
                 />

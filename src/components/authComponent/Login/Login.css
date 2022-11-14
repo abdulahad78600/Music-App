@@ -13,6 +13,11 @@
     height: 30px;
     
   } 
+  .heading
+  {
+    display: flex;
+    justify-content: center;
+  }
 .loginInput
 {
   width:200px;
@@ -47,11 +52,11 @@ input{border: 0; outline: 0;}
   font-size: 17px !important;
  } 
 }
-.logo 
-{
-  width: 200PX;
-  height: 50px;
-}
+  .logo 
+  {
+    width: 200PX;
+    height: 50px;
+  }
 .mainContainer
 {
   display: flex;

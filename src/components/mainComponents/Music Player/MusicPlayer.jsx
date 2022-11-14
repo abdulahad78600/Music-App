@@ -40,13 +40,18 @@ class MusicPlay extends Component {
     this.setState({ playing: !this.state.playing });
     this.waveform.playPause();
   };
+ myFunction() {
+    var x = document.getElementById("track").ended;
+    document.getElementById("demo").innerHTML =- x;
+  }
 
   render() {
     return (
+      <div>
       <div className="musicPlay">
-        {/* <Navbar /> */}
+        <Navbar />
         <div>
-          <img src={musicImage} alt="Music Album" className="music_image" />
+          <img src={musicImage} alt="Music Album" className="musicImage" />
         </div>
         <div className="musicBottomContainer">
           <div className="music_info">
@@ -58,7 +63,12 @@ class MusicPlay extends Component {
           <div className="waveformContainer">
             <div id="waveform" className="waveform" />
           </div>
-          <audio id="track" src={Music} />
+          <audio  id="track" src={Music} onChange={(e)=>{
+            console.log("=======evemy" , e)
+          }} onEnded={()=>{
+            this.myFunction();
+            console.log("================ended")
+          }} />
           <div className="playerControls">
             <VolumeUpIcon />
             <SkipPreviousIcon className="skipPrevButton" />
@@ -72,6 +82,7 @@ class MusicPlay extends Component {
             <StarBorderIcon className="starButton" />
           </div>
         </div>
+      </div>
       </div>
     );
   }

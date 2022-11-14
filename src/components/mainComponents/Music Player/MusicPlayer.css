@@ -1,7 +1,7 @@
 .musicPlay {
     color: white;
   }
-  .music_image {
+  .musicImage {
     height: 45vh;
     width: 80vw;
     display: flex;
@@ -57,9 +57,28 @@
     background-color: white;
     color: black;
     border-radius: 5px;
+    padding-bottom: 5px;
   }
+ 
   .skipPrevButton,
   .skipNextButton,
   .starButton {
     transform: scale(1.5);
   }
+  @media only screen and (max-width:500px){
+    .logoMusic
+    {
+     width:120px;
+     height:30px
+    } 
+    .paraColor
+    {
+      font-size: 15px;
+    }
+    .mainNavbar
+    {
+      display: flex;
+      flex-direction: row !important;
+    
+    }
+   }

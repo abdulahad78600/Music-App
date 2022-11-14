@@ -52,3 +52,9 @@
 {
   width:100%;
 }
+@media only screen and (max-width:300px){
+  .mediaStyle
+  {
+   font-size: 10x !important;
+  } 
+ }

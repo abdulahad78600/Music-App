@@ -57,19 +57,19 @@ function App() {
          <Route
           path="/questionare"
           element={
-            <PublicRoute restricted>
+            <PrivateRoute restricted>
               {" "}
               <Questionare />
-            </PublicRoute>
+            </PrivateRoute>
           }
         />
          <Route
           path="/musicplay"
           element={
-            <PublicRoute restricted>
+            <PrivateRoute restricted>
               {" "}
               <MusicPlay />
-            </PublicRoute>
+            </PrivateRoute>
           }
         />
       </Routes>

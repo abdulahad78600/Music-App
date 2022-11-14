@@ -21,7 +21,7 @@ const Login = () => {
       auth.signInWithEmailAndPassword(userData.email,userData.password).then(res=>{
         console.log("==========res" ,res )
         setToken(res.user.access_token);  
-        navigates("/dashboard");
+        navigates("/questionare");
       }).catch((error)=>{
         console.log("--------", error)
       })
