@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
 import { auth } from '../../../utils/Firebase'
 import { useNavigate, useLocation } from "react-router-dom";
+import MusicButton from "../../commonComnents/Button";
 import Logo from "../../../assets/images/logo.png"
 
 
@@ -12,14 +12,17 @@ const Reset = ({ }) => {
     newPassword: "",
   });
   const navigates = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const resetPassword = async () => {
-
+    setIsLoading(true)
     const queryParams = new URLSearchParams(location.search)
     const oobCode = queryParams.get("oobCode");
     auth.confirmPasswordReset(oobCode, userData.newPassword).then(res => {
+    setIsLoading(false)
       navigates("/login")
     }).catch((error) => {
+    setIsLoading(false)
       console.log("--------", error)
     })
 
@@ -44,7 +47,7 @@ const Reset = ({ }) => {
       <img className="logo" src={Logo} />
       </div>
       <div>
-        <h1 className="heading">Reset </h1>
+        <h1 className="heading">Reset Password </h1>
         </div>
       </div>
       <br />
@@ -65,13 +68,7 @@ const Reset = ({ }) => {
         <br />
       </div>
       <div className="signupButton">
-        <Button
-          className="buttonStyle"
-          onClick={resetPassword}
-          variant="contained"
-        >
-          Reset
-        </Button>
+        <MusicButton title="Reset" isLoading={isLoading} onClick={resetPassword} />
       </div>
     </div>
   );

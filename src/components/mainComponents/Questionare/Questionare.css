@@ -1,60 +1,62 @@
-.mainContainerQuestion
-{
+.mainContainerQuestion {
   padding-top: 40px;
 }
-.mediaStyle
-{
-    color: white;
-    padding-bottom: 10px;
+.mediaStyle {
+  color: white;
+  padding-bottom: 10px;
+  text-align: center;
 }
-.questionInput
-{
-  width:210px;
+.questionInput {
+  width: 210px;
   height: 30px;
   border-radius: 25px;
   border: 1px solid black !important;
   padding-left: 10px;
 }
-.questionButton
-{
-    display: flex;
-    justify-content: center !important;
-    padding-bottom: 15px;
+.questionButton {
+  display: flex;
+  justify-content: center !important;
+  padding-top: 20px;
+  padding-bottom: 55px;
 }
-.inputRange
-{
-  color: white ;
+.inputRange {
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 90%;
+  text-align: center;
 }
-.range
-{
+.range {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 25px;
 }
-.textColor
-{
-  color:white;
-  padding-right:30px;
+.textColor {
+  color: white;
+  padding-right: 30px;
   width: 80px;
 }
-.rangeItems
-{
+.rangeItems {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.slider {
+  width: 100%;
+}
+@media only screen and (max-width: 375px) {
+  .mediaStyle {
+    font-size: 10x !important;
+    width: 90%;
+  }
+}
 
+.headingStyle {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  padding-bottom: 30px;
 }
-.slider
-{
-  width:100%;
-}
-@media only screen and (max-width:300px){
-  .mediaStyle
-  {
-   font-size: 10x !important;
-  } 
- }

@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
-import {auth} from '../../../utils/Firebase'
-import Logo from "../../../assets/images/logo.png"
+import { auth } from "../../../utils/Firebase";
+import Logo from "../../../assets/images/logo.png";
+import MusicButton from "../../commonComnents/Button";
 import "./Forget.css";
 
 const Forget = () => {
   const [userData, setUserData] = useState({
     email: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const forget = () =>
-  {
-      auth.sendPasswordResetEmail(userData.email).then(res=>{
-      }).catch((error)=>{
-        console.log("--------", error)
+  const forget = () => {
+    setIsLoading(true);
+    auth
+      .sendPasswordResetEmail(userData.email)
+      .then((res) => {
+        setIsLoading(false);
       })
-  }
+      .catch((error) => {
+        setIsLoading(false);
+
+        console.log("--------", error);
+      });
+  };
   const emailRegex =
     /^([+\w-]+(?:.[+\w-]+))@((?:[\w-]+.)\w[\w-]{0,66}).([a-z]{2,6}(?:.[a-z]{2})?)$/i;
   const [errorText, setErrorText] = useState("");
@@ -32,12 +39,12 @@ const Forget = () => {
   };
   return (
     <div className="main">
-     <div className="mainContainer">
-       <div className="logoContainer"> 
-      <img className="logo" src={Logo} />
-      </div>
-      <div>
-        <h1 className="heading">Forget </h1>
+      <div className="mainContainer">
+        <div className="logoContainer">
+          <img className="logo" src={Logo} />
+        </div>
+        <div>
+          <h1 className="heading">Forget Password</h1>
         </div>
       </div>
       <br />
@@ -59,15 +66,9 @@ const Forget = () => {
         <br />
       </div>
       <div className="signupButton">
-        <Button
-          className="buttonStyle"
-          onClick={forget}
-          variant="contained"
-        >
-          Send Email
-        </Button>
+        <MusicButton title="Send Email" isLoading={isLoading} onClick={forget} />
       </div>
     </div>
   );
 };
-export default Forget; 
+export default Forget;

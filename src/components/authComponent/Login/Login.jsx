@@ -1,31 +1,59 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import {auth} from '../../../utils/Firebase'
-import { setToken } from "../../../utils/LocalStorage"; 
+import { auth } from "../../../utils/Firebase";
+import { setToken, setIsFilled } from "../../../utils/LocalStorage";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../../assets/images/logo.png"
+import firebase from "firebase/compat/app";
+import Logo from "../../../assets/images/logo.png";
+import MusicButton from "../../commonComnents/Button";
 import "./Login.css";
 
 const Login = () => {
-
   const emailRegex =
     /^([+\w-]+(?:\.[+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
   const [userData, setUserData] = useState({
-    email: "",  
+    email: "",
     password: "",
   });
   const navigates = useNavigate();
-  const signIn=()=>
-  {
-      auth.signInWithEmailAndPassword(userData.email,userData.password).then(res=>{
-        console.log("==========res" ,res )
-        setToken(res.user.access_token);  
-        navigates("/questionare");
-      }).catch((error)=>{
-        console.log("--------", error)
+  const [isLoading, setIsLoading] = useState(false);
+
+  const signIn = () => {
+    setIsLoading(true);
+    auth
+      .signInWithEmailAndPassword(userData.email, userData.password)
+      .then((res) => {
+        setToken(res.user.multiFactor.user.accessToken);
+        saveIsFilledBoolean(res.user.multiFactor.user.uid);
       })
-  }
-  const [errorText, setErrorText] = useState("");   
+      .catch((error) => {
+        console.log("--------", error);
+      });
+  };
+
+  const saveIsFilledBoolean = async (id) => {
+    const db = firebase.firestore();
+    const res = db.collection("users").doc(id);
+    await res
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const user = doc.data();
+          setIsFilled(user.is_form_filled);
+          setIsLoading(false);
+
+          navigates("/questionare");
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log("Error getting document:", error);
+      });
+  };
+
+  const [errorText, setErrorText] = useState("");
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
@@ -41,11 +69,11 @@ const Login = () => {
   return (
     <div className="main">
       <div className="mainContainer">
-       <div className="logoContainer"> 
-      <img className="logo" src={Logo} />
-      </div>
-      <div>
-        <h1 className="heading">LOGIN </h1>
+        <div className="logoContainer">
+          <img className="logo" src={Logo} />
+        </div>
+        <div>
+          <h1 className="heading">LOGIN </h1>
         </div>
       </div>
       <br />
@@ -82,14 +110,9 @@ const Login = () => {
       <div>
         <br />
       </div>
+
       <div className="signupButton">
-        <Button
-          className="buttonStyle"
-          onClick={signIn}
-          variant="contained"
-        >
-          Login
-        </Button>
+        <MusicButton title="Login" isLoading={isLoading} onClick={signIn} />
       </div>
     </div>
   );
