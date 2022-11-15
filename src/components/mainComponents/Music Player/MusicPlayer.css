@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
   }
   .dotSeparator {
     width: 5px;
@@ -81,4 +82,8 @@
       flex-direction: row !important;
     
     }
+   }
+
+   .audioStyle{
+    width: 80%;
    }

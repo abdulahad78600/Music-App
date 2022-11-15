@@ -1,53 +1,29 @@
 import React, { Component } from "react";
-import musicImage from "../../../assets/images/musicImage.png"
-import Music from "../../../assets/images/music.mp3"
+import musicImage from "../../../assets/images/musicImage.png";
+import Music from "../../../assets/images/music.mp3";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import PauseIcon from '@mui/icons-material/Pause';
+import PauseIcon from "@mui/icons-material/Pause";
 import Navbar from "../../commonComnents";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import WaveSurfer from "wavesurfer.js";
+import ReactAudioPlayer from "react-audio-player";
 import "./MusicPlayer.css";
 
-class MusicPlay extends Component {
-  state = {
-    playing: true,
+const MusicPlay = () => {
+  
+  const onPause = (e) => {
+    console.log("===========on pause", e);
   };
 
-
-  componentDidMount() {
-    const track = document.querySelector("#track");
-
-    this.waveform = WaveSurfer.create({
-      barWidth: 3,
-      cursorWidth: 1,
-      container: "#waveform",
-      backend: "WebAudio",
-      height: 80,
-      progressColor: "yellow",
-      responsive: true,
-      waveColor: "grey",
-      cursorColor: "transparent",
-      barGap: 2.5,
-      barRadius: 5,
-    });
-    this.waveform.load(track);
-  }
-
-  handlePlay = () => {
-    this.setState({ playing: !this.state.playing });
-    this.waveform.playPause();
+  const onEnded = (e) => {
+    console.log("===========on ended", e);
   };
- myFunction() {
-    var x = document.getElementById("track").ended;
-    document.getElementById("demo").innerHTML =- x;
-  }
 
-  render() {
-    return (
-      <div>
+  return (
+    <div>
       <div className="musicPlay">
         <Navbar />
         <div>
@@ -60,32 +36,17 @@ class MusicPlay extends Component {
               Jack Harlow <div className="dotSeparator"></div> Hip Hop
             </div>
           </div>
-          <div className="waveformContainer">
-            <div id="waveform" className="waveform" />
-          </div>
-          <audio  id="track" src={Music} onChange={(e)=>{
-            console.log("=======evemy" , e)
-          }} onEnded={()=>{
-            this.myFunction();
-            console.log("================ended")
-          }} />
-          <div className="playerControls">
-            <VolumeUpIcon />
-            <SkipPreviousIcon className="skipPrevButton" />
-
-            {this.state.playing ? (
-              <PlayArrowIcon onClick={this.handlePlay} className="playButton" />
-            ) : (
-              <PauseIcon onClick={this.handlePlay} className="playButton" />
-            )}
-            <SkipNextIcon className="skipNextButton" />
-            <StarBorderIcon className="starButton" />
-          </div>
+          <ReactAudioPlayer
+            onEnded={onEnded}
+            onPause={onPause}
+            src={Music}
+            controls
+            className="audioStyle"
+          />
         </div>
       </div>
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default MusicPlay;
