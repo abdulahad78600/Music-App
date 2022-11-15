@@ -87,3 +87,52 @@
    .audioStyle{
     width: 80%;
    }
+  .emoji
+  {
+    font-size: 35px;
+  }
+  .emojiContainer
+  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:60%;
+    justify-content: space-around;
+  }
+  .mainEmoji
+  {
+    display: contents;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  .emojiStyle
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:55px;
+    width:55px;
+    border:2px solid grey;
+    border-radius:10px ;
+    background-color: black;
+  }
+  .emojiContain
+  {
+    display: contents;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .musicPlay
+  {
+    display: contents;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pointer
+  {
+    cursor: alias;
+  }

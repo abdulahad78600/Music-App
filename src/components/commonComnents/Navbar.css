@@ -28,6 +28,8 @@
     float: right;
     color: white;
     margin-right: 10px !important;
+    cursor: pointer;
+     margin-top: 5px;
     
   }
   .logoMusic

@@ -3,7 +3,9 @@ import { Button } from "@mui/material";
 import { auth } from "../../../utils/Firebase";
 import { useNavigate } from "react-router-dom";
 import { postAPI } from "../../../utils/api";
+import CircularProgress from "@mui/material"; 
 import Logo from "../../../assets/images/logo.png";
+import MusicButton from "../../commonComnents/Button";
 import "./Signup.css";
 
 const Signup = () => {
@@ -15,7 +17,7 @@ const Signup = () => {
   const [errorText, setErrorText] = useState("");
   const [errorText2, seterrorText2] = useState("");
   const [errorText3, setErrorText3] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState({
     name: "",
     phone: "",
@@ -24,12 +26,15 @@ const Signup = () => {
   });
 
   const signUp = () => {
+    setIsLoading(true)
     auth
       .createUserWithEmailAndPassword(userData.email, userData.password)
       .then((res) => {
         saveDataOnFirebase(res.user.uid);
+        setIsLoading(false)
       })
       .catch((error) => {
+        setIsLoading(false)
         console.log("--------", error);
       });
   };
@@ -144,14 +149,7 @@ const Signup = () => {
         <br />
       </div>
       <div className="signupButton">
-        <Button
-          className="buttonStyle"
-          onClick={signUp}
-          isLoading={isLoading}
-          variant="contained"
-        >
-          Signup
-        </Button>
+        <MusicButton title="Signup" isLoading={isLoading} onClick={signUp} />
       </div>
     </div>
   );
