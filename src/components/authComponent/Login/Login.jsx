@@ -41,8 +41,7 @@ const Login = () => {
           const user = doc.data();
           setIsFilled(user.is_form_filled);
           setIsLoading(false);
-
-          navigates("/questionare");
+          user.is_form_filled ?  navigates("/musicplay"):navigates("/questionare");
         } else {
           console.log("No such document!");
         }

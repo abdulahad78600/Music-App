@@ -27,6 +27,7 @@ const Questionare = () => {
     frequency_per_week: "",
     favorite_sneakers_brand: "",
     favorite_clothing_brand: "",
+    genre: "",
     rank_genres: {},
   });
   const navigates = useNavigate();
@@ -157,6 +158,21 @@ const Questionare = () => {
       <br />
       <div className="emailInput">
         <span className="mediaStyle">
+          What is your favorite style of music?
+        </span>
+        <input
+          className="questionInput"
+          placeholder="What is your favorite style of music?"
+          type="text"
+          id="genre"
+          name="genre"
+          value={userData.genre}
+          onChange={handleOnChange}
+        />
+      </div>
+      <br />
+      <div className="emailInput">
+        <span className="mediaStyle">
           Which social social_media_apps apps do you regularly use?
         </span>
         <br />
@@ -214,7 +230,6 @@ const Questionare = () => {
         />
       </div>
       <br />
-      <br />
       <div className="emailInput">
         <span className="mediaStyle">
           What year of college are you currently in?{" "}
@@ -230,23 +245,6 @@ const Questionare = () => {
         />
       </div>
       <br />
-      <br />
-      <div className="emailInput">
-        <span className="mediaStyle">
-          What is your favorite style of music?
-        </span>
-        <input
-          className="questionInput"
-          placeholder="What is your favorite style of music?"
-          type="text"
-          id="favorite_music_app"
-          name="favorite_music_app"
-          value={userData.favorite_music_app}
-          onChange={handleOnChange}
-        />
-      </div>
-      <br />
-
       <div className="emailInput">
         <span className="mediaStyle">Do you go to concerts?</span>
         <input
@@ -287,7 +285,6 @@ const Questionare = () => {
           onChange={handleOnChange}
         />
       </div>
-      <br />
       <br />
       <div className="emailInput">
         <span className="mediaStyle">
