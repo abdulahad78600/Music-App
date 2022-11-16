@@ -27,6 +27,9 @@ input:-internal-autofill-selected
 {
   border-radius: 25px !important;
 }
+.css-1ptx2yq-MuiInputBase-root-MuiInput-root:after{
+  border-bottom: none !important;
+}
 
 /* .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
   display: none !important;

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
+import {  FormControl,InputLabel, NativeSelect } from "@mui/material";
 import { getAuth } from "firebase/auth";
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import MusicButton from "../../commonComnents/Button";
@@ -27,7 +26,7 @@ const Questionare = () => {
     frequency_per_week: "",
     favorite_sneakers_brand: "",
     favorite_clothing_brand: "",
-    genre: "",
+    genre: "Pop",
     rank_genres: {},
   });
   const navigates = useNavigate();
@@ -45,7 +44,6 @@ const Questionare = () => {
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
-    setmusic({ ...music, [name]: value });
   };
 
   const handleOnChangeMusic = (event) => {
@@ -160,7 +158,7 @@ const Questionare = () => {
         <span className="mediaStyle">
           What is your favorite style of music?
         </span>
-        <input
+        {/* <input
           className="questionInput"
           placeholder="What is your favorite style of music?"
           type="text"
@@ -168,7 +166,27 @@ const Questionare = () => {
           name="genre"
           value={userData.genre}
           onChange={handleOnChange}
-        />
+        /> */}
+        <FormControl>
+          <InputLabel className="selectStyle" variant="standard" htmlFor="uncontrolled-native">
+            Age
+          </InputLabel>
+          <NativeSelect
+            defaultValue={30}
+            name="genre"
+            value={userData.genre}
+            onChange={handleOnChange}
+            inputProps={{
+              name: "genre",
+              id: "genre",
+            }}
+          >
+            <option value={"Pop"}>Pop</option>
+            <option value={"Hip Hop"}>Hip Hop</option>
+            <option value={"Rock"}>Rock</option>
+            <option value={"Wagera"}>Wagera</option>
+          </NativeSelect>
+        </FormControl>
       </div>
       <br />
       <div className="emailInput">
