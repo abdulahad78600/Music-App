@@ -49,7 +49,6 @@ const CommentComponent = () => {
         rel='noopener noreferrer'
         href='https://github.com/RiyaNegi/react-comments-section/blob/main/example/src/components/DefaultComponent.tsx'
       >
-        <span className='title'>Default Component</span>  
       </a>
       <CommentSection
         currentUser={{

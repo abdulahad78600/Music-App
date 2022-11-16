@@ -136,3 +136,6 @@
   {
     cursor: alias;
   }
+  .emoji-input .emoji-icon{
+    top: 0px !important;
+  }

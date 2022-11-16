@@ -1,49 +1,67 @@
-.hr-style
-{
+.hr-style {
   display: none;
 }
-.comment-title
-{
+.comment-title {
   display: none;
 }
-.form
-{
+.form {
   background-color: white;
 }
-.userLink 
-{
+.userLink {
   display: none;
 }
-.userActions .actionsBtn
-{
+.userActions .actionsBtn {
   display: none;
 }
-.replyBtn
-{
-  display:none;
-}
-.infoStyle
-{
+.replyBtn {
   display: none;
 }
-.no-comDiv
-{
+.infoStyle {
   display: none;
 }
-.form .postComment
-{
+.no-comDiv {
+  display: none;
+}
+.form .postComment {
   border-bottom: white;
 }
-.overlay
-{
+.overlay {
   padding: 0px;
 }
-.halfDiv
-{
+.halfDiv {
   display: none;
 }
-.form
-{
+.form {
   padding: 0px;
   width: 300px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+}
+
+.form .postBtn {
+  padding: 0px !important;
+  display: flex;
+  justify-content: center;
+  height: 25px !important;
+  width: 100px;
+  font-size: 10px;
+}
+
+.form .userImg {
+  display: none;
+}
+.emoji-picker-react .emoji button {
+  width: 33px;
+  background-color: white !important;
+}
+.emoji-picker-react div.skin-tones-list button {
+  display: none;
+}
+.emoji-picker-react .emoji-categories button.active {
+  background-color: white !important;
+}
+
+.emoji-picker-react .emoji-categories button {
+  background-color: white !important;
 }

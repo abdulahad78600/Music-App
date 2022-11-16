@@ -69,7 +69,7 @@ const MusicPlay = () => {
                 </div>
             </div>
             <div>
-              <CommentComponent></CommentComponent>
+              <CommentComponent />
                 </div>
               </>
           )}
