@@ -1,0 +1,49 @@
+.hr-style
+{
+  display: none;
+}
+.comment-title
+{
+  display: none;
+}
+.form
+{
+  background-color: white;
+}
+.userLink 
+{
+  display: none;
+}
+.userActions .actionsBtn
+{
+  display: none;
+}
+.replyBtn
+{
+  display:none;
+}
+.infoStyle
+{
+  display: none;
+}
+.no-comDiv
+{
+  display: none;
+}
+.form .postComment
+{
+  border-bottom: white;
+}
+.overlay
+{
+  padding: 0px;
+}
+.halfDiv
+{
+  display: none;
+}
+.form
+{
+  padding: 0px;
+  width: 300px;
+}

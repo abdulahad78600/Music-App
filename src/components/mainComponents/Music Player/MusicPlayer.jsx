@@ -3,6 +3,7 @@ import musicImage from "../../../assets/images/musicImage.png";
 import Music from "../../../assets/images/music.mp3";
 import Navbar from "../../commonComnents";
 import ReactAudioPlayer from "react-audio-player";
+import CommentComponent from "../../commonComnents/CommentBox";
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
@@ -54,6 +55,7 @@ const MusicPlay = () => {
               className="audioStyle"
             />
           ) : (
+            <>
             <div className="mainEmoji">
               <div className="emojiContainer">
                 <div className="emojiStyle"> <Emoji symbol="🔥" className="emoji" /> </div>
@@ -66,10 +68,12 @@ const MusicPlay = () => {
                   <div className="emojiStyle" > <Emoji symbol="💩" className="emoji" /> </div>
                 </div>
             </div>
+            <div>
+              <CommentComponent></CommentComponent>
+                </div>
+              </>
           )}
-
         </div>
-
       </div>
     </div>
   );

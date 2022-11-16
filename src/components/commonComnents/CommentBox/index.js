@@ -1,2 +1,2 @@
-import CommentBox from "./CommentBox";
-export default CommentBox;
+import CommentComponent from "./CommentBox";
+export default CommentComponent
