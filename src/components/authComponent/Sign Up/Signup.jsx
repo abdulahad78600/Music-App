@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { postAPI } from "../../../utils/api";
 import Logo from "../../../assets/images/logo.png";
 import MusicButton from "../../commonComnents/Button";
+import { useSnackbar } from "notistack";
 import "./Signup.css";
 
 const Signup = () => {
@@ -22,6 +23,7 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  const { enqueueSnackbar } = useSnackbar();
 
   const signUp = () => {
     setIsLoading(true)
@@ -34,6 +36,14 @@ const Signup = () => {
       .catch((error) => {
         setIsLoading(false)
         console.log("--------", error);
+        console.log("--------", error);
+        enqueueSnackbar("Some thing went wrong", {
+          anchorOrigin: {
+            horizontal: "right",
+            vertical: "top"
+          },
+          variant: "error"
+        });
       });
   };
 

@@ -5,17 +5,19 @@ import { useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import Logo from "../../../assets/images/logo.png";
 import MusicButton from "../../commonComnents/Button";
+import { useSnackbar } from "notistack";
 import "./Login.css";
 
 const Login = () => {
   const emailRegex =
     /^([+\w-]+(?:\.[+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState({  
     email: "",
     password: "",
   });
   const navigates = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const signIn = () => {
     setIsLoading(true);
@@ -27,7 +29,15 @@ const Login = () => {
         saveIsFilledBoolean(res.user.multiFactor.user.uid);
       })
       .catch((error) => {
+        setIsLoading(false)
         console.log("--------", error);
+        enqueueSnackbar("Please Enter Correct Credentials ", {
+          anchorOrigin: {
+            horizontal: "right",
+            vertical: "top"
+          },
+          variant: "error"
+        });
       });
   };
 

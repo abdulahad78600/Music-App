@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { auth } from "../../../utils/Firebase";
 import Logo from "../../../assets/images/logo.png";
 import MusicButton from "../../commonComnents/Button";
+import { useSnackbar } from "notistack";
 import "./Forget.css";
 
 const Forget = () => {
@@ -9,6 +10,7 @@ const Forget = () => {
     email: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const forget = () => {
     setIsLoading(true);
@@ -19,6 +21,13 @@ const Forget = () => {
       })
       .catch((error) => {
         setIsLoading(false);
+        enqueueSnackbar("Please Enter Valid Email", {
+          anchorOrigin: {
+            horizontal: "right",
+            vertical: "top"
+          },
+          variant: "error"
+        });
 
         console.log("--------", error);
       });
@@ -37,6 +46,7 @@ const Forget = () => {
       }
     }
   };
+
   return (
     <div className="main">
       <div className="mainContainer">
