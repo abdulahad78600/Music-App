@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getID } from "../../../utils/LocalStorage";
 import musicImage from "../../../assets/images/musicImage.png";
-import Music from "../../../assets/images/music.mp3";
 import Navbar from "../../commonComnents";
 import ReactAudioPlayer from "react-audio-player";
 import CommentComponent from "../../commonComnents/CommentBox";
-import "./MusicPlayer.css";
 import { getAPI } from "../../../utils/api";
+import "./MusicPlayer.css";
 
 const MusicPlay = () => {
   const [isEnded, setIsEnded] = useState(false);
@@ -36,6 +35,7 @@ const MusicPlay = () => {
     const response = await getAPI(`getNextUserSong?id=${ID}`);
     if (response.status == 200) {
       setSong(response.data);
+      console.log("========-=song", `getNextUserSong?id=${ID}`, response.data);
     }
   };
 
@@ -50,6 +50,8 @@ const MusicPlay = () => {
     </span>
   );
 
+  const rateSong = (emoji) => {};
+
   return (
     <div>
       <div className="musicPlay">
@@ -59,16 +61,14 @@ const MusicPlay = () => {
         </div>
         <div className="musicBottomContainer">
           <div className="music_info">
-            <h4 className="pointer">First Class</h4>
-            <div className="producerAndGenre">
-              Jack Harlow <div className="dotSeparator"></div> Hip Hop
-            </div>
+            <h4 className="pointer">{song.name}</h4>
+            {song.genre}
           </div>
           {!isEnded ? (
             <ReactAudioPlayer
               onEnded={onEnded}
               onPause={onPause}
-              src={Music}
+              src={song.url}
               controls
               className="audioStyle"
             />
@@ -76,31 +76,43 @@ const MusicPlay = () => {
             <>
               <div className="mainEmoji">
                 <div className="emojiContainer">
-                  <div className="emojiStyle">
-                    {" "}
-                    <Emoji symbol="🔥" className="emoji" />{" "}
+                  <div
+                    className="emojiStyle"
+                    onClick={() => rateSong("U+1F525")}
+                  >
+                    <Emoji symbol="🔥" className="emoji" />
                   </div>
-                  <div className="emojiStyle">
-                    {" "}
-                    <Emoji className="emoji" symbol="😍" />{" "}
+                  <div
+                    className="emojiStyle"
+                    onClick={() => rateSong("U+1F60D")}
+                  >
+                    <Emoji className="emoji" symbol="😍" />
                   </div>
-                  <div className="emojiStyle">
-                    {" "}
-                    <Emoji className="emoji" symbol="👍"></Emoji>{" "}
+                  <div
+                    className="emojiStyle"
+                    onClick={() => rateSong("U+1F44D")}
+                  >
+                    <Emoji className="emoji" symbol="👍"></Emoji>
                   </div>
                 </div>
                 <div className="emojiContainer">
-                  <div className="emojiStyle">
-                    {" "}
-                    <Emoji className="emoji" symbol="👌" />{" "}
+                  <div
+                    className="emojiStyle"
+                    onClick={() => rateSong("U+1F44C")}
+                  >
+                    <Emoji className="emoji" symbol="👌" />
                   </div>
-                  <div className="emojiStyle ">
-                    {" "}
-                    <Emoji symbol="😐" className="emoji" />{" "}
+                  <div
+                    className="emojiStyle"
+                    onClick={() => rateSong("U+1F610")}
+                  >
+                    <Emoji symbol="😐" className="emoji" />
                   </div>
-                  <div className="emojiStyle">
-                    {" "}
-                    <Emoji symbol="💩" className="emoji" />{" "}
+                  <div
+                    className="emojiStyle"
+                    onClick={() => rateSong("U+1F4A9")}
+                  >
+                    <Emoji symbol="💩" className="emoji" />
                   </div>
                 </div>
               </div>
