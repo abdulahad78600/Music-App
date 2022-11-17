@@ -27,3 +27,15 @@ export const getIsFilled = () => {
 export const deleteIsFilled = () => {
   localStorage.removeItem("isFilled");
 };
+
+export const setID = (id) => {
+  localStorage.setItem("uid", id);
+};
+
+export const getID = () => {
+  return localStorage.getItem("uid");
+};
+
+export const deleteID = () => {
+  localStorage.removeItem("uid");
+};

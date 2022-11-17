@@ -10,3 +10,12 @@ export const postAPI = async (url, body) => {
     return err.response.data
   }
 }
+
+export const getAPI = async (url) => {
+  try {
+    const res = await axios.get(url)
+    return res
+  } catch (err) {
+    return err.response.data
+  }
+}

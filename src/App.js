@@ -13,7 +13,6 @@ function App() {
           path="/login"
           element={
             <PublicRoute restricted>
-              {" "}
               <Login />
             </PublicRoute>
           }
@@ -22,7 +21,6 @@ function App() {
           path="/signup"
           element={
             <PublicRoute restricted>
-              {" "}
               <Signup />
             </PublicRoute>
           }
@@ -31,7 +29,6 @@ function App() {
           path="/reset"
           element={
             <PublicRoute restricted>
-              {" "}
               <Reset />
             </PublicRoute>
           }
@@ -40,7 +37,6 @@ function App() {
           path="/forget"
           element={
             <PublicRoute restricted>
-              {" "}
               <Forget />
             </PublicRoute>
           }
@@ -49,7 +45,6 @@ function App() {
           path="/dashboard"
           element={
             <PrivateRoute>
-              {" "}
               <Dashboard />
             </PrivateRoute>
           }
@@ -57,8 +52,7 @@ function App() {
          <Route
           path="/questionare"
           element={
-            <PrivateRoute restricted>
-              {" "}
+            <PrivateRoute>
               <Questionare />
             </PrivateRoute>
           }
@@ -66,8 +60,7 @@ function App() {
          <Route
           path="/musicplay"
           element={
-            <PrivateRoute restricted>
-              {" "}
+            <PrivateRoute>
               <MusicPlay />
             </PrivateRoute>
           }

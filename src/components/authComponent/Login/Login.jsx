@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
 import { auth } from "../../../utils/Firebase";
-import { setToken, setIsFilled } from "../../../utils/LocalStorage";
+import { setToken, setIsFilled, setID } from "../../../utils/LocalStorage";
 import { useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import Logo from "../../../assets/images/logo.png";
@@ -24,6 +23,7 @@ const Login = () => {
       .signInWithEmailAndPassword(userData.email, userData.password)
       .then((res) => {
         setToken(res.user.multiFactor.user.accessToken);
+        setID(res.user.multiFactor.user.uid)
         saveIsFilledBoolean(res.user.multiFactor.user.uid);
       })
       .catch((error) => {
