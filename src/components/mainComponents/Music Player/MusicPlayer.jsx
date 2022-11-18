@@ -12,7 +12,7 @@ import { getAPI, postAPI } from "../../../utils/api";
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
-  const [isEnded, setIsEnded] = useState(true);  //make it false after implementation
+  const [isEnded, setIsEnded] = useState(false);  
   const [ID, setID] = useState("");
   const [song, setSong] = useState({ id: "" });
   const [open, setOpen] = React.useState(false);
@@ -39,13 +39,14 @@ const MusicPlay = () => {
   }, [ID]);
 
   const getSong = async () => {
-    console.log("=========get song", `getNextUserSong?id=${ID}`);
     const response = await getAPI(`getNextUserSong?id=${ID}`);
-    console.log("=========get song res", response);
-
-    if (response.status == 200) {
+    if (response.data.success) {
       setSong(response.data);
-      console.log("========-=song", `getNextUserSong?id=${ID}`, response.data);
+      console.log("========-success", `getNextUserSong?id=${ID}`, response.data);
+    }else{
+      console.log("========error", )
+      setSong({url:""})
+      setIsEnded(false)
     }
   };
 
@@ -55,11 +56,10 @@ const MusicPlay = () => {
       song_id: song.id,
       rating: emoji,
     });
-
+    console.log("===========submit rating res" , response)
     if (response.status == 200) {
       handleOpen();
     }
-    handleOpen();   // just for implementation
   };
 
   const getNextSong = () => {
