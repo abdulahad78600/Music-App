@@ -15,7 +15,7 @@ const MusicPlay = () => {
   const [isEnded, setIsEnded] = useState(false);  
   const [ID, setID] = useState("");
   const [song, setSong] = useState({ id: "" });
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -162,9 +162,9 @@ const MusicPlay = () => {
       >
         <Box className="modalStyle">
           <div>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
+            <p>
               Do you want to play next song?
-            </Typography>
+            </p>
             <div className="buttonsContainer">
               <div className="noStyle" onClick={handleClose}>
                 No

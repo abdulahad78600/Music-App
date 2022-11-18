@@ -82,6 +82,22 @@
       flex-direction: row !important;
     
     }
+    .modalStyle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px !important;
+    height: 100px;
+    background-color: white !important;
+    padding: 5px;
+    border-width: 0px;
+    border-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+  }
    }
 
    .audioStyle{
@@ -182,4 +198,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 20px;
+
   }
