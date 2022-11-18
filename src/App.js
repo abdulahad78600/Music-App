@@ -1,15 +1,16 @@
-import { Reset, Login, Signup, Forget } from './components/authComponent';
+import React from "react";
+import { Reset, Login, Signup, Forget } from "./components/authComponent";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {Dashboard,Questionare,MusicPlay} from './components/mainComponents';
-import PrivateRoute from './routes/PrivateRouting';
-import PublicRoute from './routes/PublicRouting';
-import './App.css';
+import { Dashboard, Questionare, MusicPlay } from "./components/mainComponents";
+import PrivateRoute from "./routes/PrivateRouting";
+import PublicRoute from "./routes/PublicRouting";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-      <Route
+        <Route
           path="/login"
           element={
             <PublicRoute restricted>
@@ -17,7 +18,7 @@ function App() {
             </PublicRoute>
           }
         />
-         <Route
+        <Route
           path="/signup"
           element={
             <PublicRoute restricted>
@@ -33,7 +34,7 @@ function App() {
             </PublicRoute>
           }
         />
-         <Route
+        <Route
           path="/forget"
           element={
             <PublicRoute restricted>
@@ -49,7 +50,7 @@ function App() {
             </PrivateRoute>
           }
         />
-         <Route
+        <Route
           path="/questionare"
           element={
             <PrivateRoute>
@@ -57,7 +58,7 @@ function App() {
             </PrivateRoute>
           }
         />
-         <Route
+        <Route
           path="/musicplay"
           element={
             <PrivateRoute>
@@ -67,7 +68,6 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
-
   );
 }
 

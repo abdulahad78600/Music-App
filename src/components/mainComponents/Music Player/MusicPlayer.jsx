@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { getID } from "../../../utils/LocalStorage";
+import { useNavigate } from "react-router-dom";
+import { getID, getIsFilled } from "../../../utils/LocalStorage";
 import musicImage from "../../../assets/images/musicImage.png";
 import Navbar from "../../commonComnents";
 import ReactAudioPlayer from "react-audio-player";
@@ -12,10 +11,11 @@ import { getAPI, postAPI } from "../../../utils/api";
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
+  const navigates = useNavigate();
   const [isEnded, setIsEnded] = useState(false);  
   const [ID, setID] = useState("");
   const [song, setSong] = useState({ id: "" });
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -29,7 +29,12 @@ const MusicPlay = () => {
 
   useEffect(() => {
     const id = getID();
+    const isFilled = getIsFilled()
+    if(isFilled){
     setID(id);
+    }else{
+      navigates("/questionare")
+    }
   }, []);
 
   useEffect(() => {
