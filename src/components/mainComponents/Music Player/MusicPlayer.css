@@ -90,6 +90,7 @@
   .emoji
   {
     font-size: 35px;
+    cursor: pointer;
   }
   .emojiContainer
   {
@@ -138,4 +139,43 @@
   }
   .emoji-input .emoji-icon{
     top: 0px !important;
+  }
+  .buttonsContainer{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  .yesStyle{
+    width: 80px;
+    height: 35px;
+    text-align: center;
+    background-color: #349ce4;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+  }
+  .noStyle{
+    width: 80px;
+    height: 35px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    margin-right: 5px;
+  }
+  .modalStyle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: white;
+    padding: 5px;
+    border-width: 0px;
+    border-color: transparent;
   }

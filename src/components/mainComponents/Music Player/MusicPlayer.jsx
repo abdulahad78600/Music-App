@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 import { getID } from "../../../utils/LocalStorage";
 import musicImage from "../../../assets/images/musicImage.png";
 import Navbar from "../../commonComnents";
 import ReactAudioPlayer from "react-audio-player";
 import CommentComponent from "../../commonComnents/CommentBox";
-import { getAPI } from "../../../utils/api";
+import { getAPI, postAPI } from "../../../utils/api";
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
-  const [isEnded, setIsEnded] = useState(false);
+  const [isEnded, setIsEnded] = useState(true);
   const [ID, setID] = useState("");
-  const [song, setSong] = useState({});
+  const [song, setSong] = useState({ id: "" });
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const onPause = (e) => {
     console.log("===========on pause", e);
@@ -32,11 +39,33 @@ const MusicPlay = () => {
   }, [ID]);
 
   const getSong = async () => {
+    console.log("=========get song", `getNextUserSong?id=${ID}`);
     const response = await getAPI(`getNextUserSong?id=${ID}`);
+    console.log("=========get song res", response);
+
     if (response.status == 200) {
       setSong(response.data);
       console.log("========-=song", `getNextUserSong?id=${ID}`, response.data);
     }
+  };
+
+  const submitRating = async (emoji) => {
+    const response = await postAPI("userSongRating", {
+      user_id: ID,
+      song_id: song.id,
+      rating: emoji,
+    });
+
+    if (response.status == 200) {
+      handleOpen();
+    }
+    handleOpen();
+
+  };
+
+  const getNextSong = () => {
+    setIsEnded(false);
+    getSong();
   };
 
   const Emoji = (props) => (
@@ -50,7 +79,9 @@ const MusicPlay = () => {
     </span>
   );
 
-  const rateSong = (emoji) => {};
+  const rateSong = (emoji) => {
+    submitRating(emoji);
+  };
 
   return (
     <div>
@@ -117,12 +148,28 @@ const MusicPlay = () => {
                 </div>
               </div>
               <div>
-                <CommentComponent />
+                <CommentComponent songID={song.id} />
               </div>
             </>
           )}
         </div>
       </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="modalStyle">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Do you want to play next song?
+          </Typography>
+          <div className="buttonsContainer">
+            <div className="noStyle" onClick={handleClose}>No</div>
+            <div className="yesStyle" onClick={getNextSong} >Yes</div>
+          </div>
+        </Box>
+      </Modal>
     </div>
   );
 };

@@ -1,9 +1,11 @@
 import React from "react";
 import { CommentSection } from "react-comments-section";
+import { postAPI } from "../../../utils/api";
+import { getID } from "../../../utils/LocalStorage";
 import "react-comments-section/dist/index.css";
 import "./CommentBox.css";
 
-const CommentComponent = () => {
+const CommentComponent = (props) => {
   const data = [
     {
       userId: "01a",
@@ -41,6 +43,24 @@ const CommentComponent = () => {
       replies: [],
     },
   ];
+
+  const postComment = async (comment) => {
+    const response = await postAPI("userSongComment" , {
+      user_id: getID(),
+      song_id:props.songID,
+      comment: comment
+    });
+    console.log("======data of comment" ,{
+      user_id: getID(),
+      song_id:props.songID,
+      comment: comment
+    } )
+    console.log("============response of comment" , response)
+    if (response.status == 200) {
+    }
+  };
+
+  
   return (
     <div style={{ width: "100%" }}>
       <a
@@ -51,6 +71,7 @@ const CommentComponent = () => {
       ></a>
       <CommentSection
         onSubmitAction={(e) => {
+          postComment(e.text)
           console.log("========submiyt", e.text);
         }}
         currentUser={{
@@ -61,7 +82,6 @@ const CommentComponent = () => {
             "https://www.linkedin.com/in/riya-negi-8879631a9/",
           currentUserFullName: "Riya Negi",
         }}
-        commentData={data}
         logIn={{
           loginLink: "http://localhost:3001/",
           signupLink: "http://localhost:3001/",
