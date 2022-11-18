@@ -12,7 +12,7 @@ import { getAPI, postAPI } from "../../../utils/api";
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
-  const [isEnded, setIsEnded] = useState(true);
+  const [isEnded, setIsEnded] = useState(true);  //make it false after implementation
   const [ID, setID] = useState("");
   const [song, setSong] = useState({ id: "" });
   const [open, setOpen] = React.useState(false);
@@ -59,13 +59,13 @@ const MusicPlay = () => {
     if (response.status == 200) {
       handleOpen();
     }
-    handleOpen();
-
+    handleOpen();   // just for implementation
   };
 
   const getNextSong = () => {
     setIsEnded(false);
     getSong();
+    handleClose()
   };
 
   const Emoji = (props) => (
@@ -161,12 +161,18 @@ const MusicPlay = () => {
         aria-describedby="modal-modal-description"
       >
         <Box className="modalStyle">
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Do you want to play next song?
-          </Typography>
-          <div className="buttonsContainer">
-            <div className="noStyle" onClick={handleClose}>No</div>
-            <div className="yesStyle" onClick={getNextSong} >Yes</div>
+          <div>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Do you want to play next song?
+            </Typography>
+            <div className="buttonsContainer">
+              <div className="noStyle" onClick={handleClose}>
+                No
+              </div>
+              <div className="yesStyle" onClick={getNextSong}>
+                Yes
+              </div>
+            </div>
           </div>
         </Box>
       </Modal>
