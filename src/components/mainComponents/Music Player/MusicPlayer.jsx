@@ -8,6 +8,7 @@ import Navbar from "../../commonComnents";
 import ReactAudioPlayer from "react-audio-player";
 import CommentComponent from "../../commonComnents/CommentBox";
 import { getAPI, postAPI } from "../../../utils/api";
+import { useSnackbar } from "notistack";
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
@@ -19,6 +20,7 @@ const MusicPlay = () => {
   const [isError, setIsError] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const onPause = (e) => {
     console.log("===========on pause", e);
@@ -72,7 +74,22 @@ const MusicPlay = () => {
     });
     console.log("===========submit rating res", response);
     if (response.data.success) {
+      enqueueSnackbar("Rating has been submitted", {
+        anchorOrigin: {
+          horizontal: "right",
+          vertical: "top"
+        },
+        variant: "success"
+      });
       handleOpen();
+    }else{
+      enqueueSnackbar("Error in submitting rating", {
+        anchorOrigin: {
+          horizontal: "right",
+          vertical: "top"
+        },
+        variant: "error"
+      });
     }
   };
 
