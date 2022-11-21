@@ -12,10 +12,11 @@ import "./MusicPlayer.css";
 
 const MusicPlay = () => {
   const navigates = useNavigate();
-  const [isEnded, setIsEnded] = useState(false);  
+  const [isEnded, setIsEnded] = useState(false);
   const [ID, setID] = useState("");
   const [song, setSong] = useState({ id: "" });
   const [open, setOpen] = React.useState(false);
+  const [isError, setIsError] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -29,17 +30,19 @@ const MusicPlay = () => {
 
   useEffect(() => {
     const id = getID();
-    const isFilled = getIsFilled()
-    if(isFilled){
-    setID(id);
-    }else{
-      navigates("/questionare")
+    const isFilled = getIsFilled();
+    if (isFilled) {
+      setID(id);
+    } else {
+      navigates("/questionare");
     }
   }, []);
 
   useEffect(() => {
     if (ID != "") {
-      getSong();
+      setTimeout(()=>{
+        getSong();
+      }, 2000);
     }
   }, [ID]);
 
@@ -47,11 +50,17 @@ const MusicPlay = () => {
     const response = await getAPI(`getNextUserSong?id=${ID}`);
     if (response.data.success) {
       setSong(response.data);
-      console.log("========-success", `getNextUserSong?id=${ID}`, response.data);
-    }else{
-      console.log("========error", )
-      setSong({url:""})
-      setIsEnded(false)
+      setIsError(false);
+      console.log(
+        "========-success",
+        `getNextUserSong?id=${ID}`,
+        response.data
+      );
+    } else {
+      console.log("========error");
+      setSong({ url: "" });
+      setIsError(true);
+      setIsEnded(false);
     }
   };
 
@@ -61,8 +70,8 @@ const MusicPlay = () => {
       song_id: song.id,
       rating: emoji,
     });
-    console.log("===========submit rating res" , response)
-    if (response.status == 200) {
+    console.log("===========submit rating res", response);
+    if (response.data.success) {
       handleOpen();
     }
   };
@@ -70,7 +79,7 @@ const MusicPlay = () => {
   const getNextSong = () => {
     setIsEnded(false);
     getSong();
-    handleClose()
+    handleClose();
   };
 
   const Emoji = (props) => (
@@ -88,6 +97,10 @@ const MusicPlay = () => {
     submitRating(emoji);
   };
 
+  useEffect(() => {
+    console.log("==========is ended is error", isEnded, isError);
+  }, [isEnded, isError]);
+
   return (
     <div>
       <div className="musicPlay">
@@ -100,7 +113,7 @@ const MusicPlay = () => {
             <h4 className="pointer">{song.name}</h4>
             {song.genre}
           </div>
-          {!isEnded ? (
+          {!isEnded && !isError ? (
             <ReactAudioPlayer
               onEnded={onEnded}
               onPause={onPause}
@@ -108,6 +121,8 @@ const MusicPlay = () => {
               controls
               className="audioStyle"
             />
+          ) : !isEnded && isError ? (
+            <h3>There are no songs in the list...</h3>
           ) : (
             <>
               <div className="mainEmoji">
@@ -167,9 +182,7 @@ const MusicPlay = () => {
       >
         <Box className="modalStyle">
           <div>
-            <p>
-              Do you want to play next song?
-            </p>
+            <p>Do you want to play next song?</p>
             <div className="buttonsContainer">
               <div className="noStyle" onClick={handleClose}>
                 No
