@@ -26,20 +26,20 @@ const Signup = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const signUp = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     auth
       .createUserWithEmailAndPassword(userData.email, userData.password)
       .then((res) => {
         saveDataOnFirebase(res.user.uid);
       })
       .catch((error) => {
-        setIsLoading(false)
+        setIsLoading(false);
         enqueueSnackbar("Some thing went wrong", {
           anchorOrigin: {
             horizontal: "right",
-            vertical: "top"
+            vertical: "top",
           },
-          variant: "error"
+          variant: "error",
         });
       });
   };
@@ -53,11 +53,11 @@ const Signup = () => {
       enqueueSnackbar("Account created successfully ", {
         anchorOrigin: {
           horizontal: "right",
-          vertical: "top"
+          vertical: "top",
         },
-        variant: "success"
+        variant: "success",
       });
-      setIsLoading(false)
+      setIsLoading(false);
       navigates("/login");
     } else {
       console.log("--------error");
@@ -162,16 +162,26 @@ const Signup = () => {
         <br />
       </div>
       <div className="signupButton">
-        <MusicButton title="Signup" isLoading={isLoading} onClick={signUp} />
+        <MusicButton
+          disabled={
+            userData.email == "" ||
+            userData.password == "" ||
+            userData.name == "" ||
+            userData.phone == ""
+          }
+          title="Signup"
+          isLoading={isLoading}
+          onClick={signUp}
+        />
       </div>
       <div className="bottom-text">
-                <div className="account-heading">
-                  <h5>Already have an Account?</h5>
-                </div>
-                <a className="signup-link" href="./login">
-                  Login
-                </a>
-              </div>
+        <div className="account-heading">
+          <h5>Already have an Account?</h5>
+        </div>
+        <a className="signup-link" href="./login">
+          Login
+        </a>
+      </div>
     </div>
   );
 };

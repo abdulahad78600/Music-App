@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import {  FormControl,InputLabel, NativeSelect } from "@mui/material";
+import { FormControl, InputLabel, NativeSelect } from "@mui/material";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import {  setIsFilled } from "../../../utils/LocalStorage";
+import { setIsFilled } from "../../../utils/LocalStorage";
 import firebase from "firebase/compat/app";
 import MusicButton from "../../commonComnents/Button";
 import "./Questionare.css";
@@ -67,7 +67,7 @@ const Questionare = () => {
       .add(data)
       .then((doc) => {
         setIsLoading(false);
-        setIsFilled(true)
+        setIsFilled(true);
         navigates("/musicplay");
       })
       .catch((error) => {

@@ -142,19 +142,19 @@ const MusicPlay = () => {
                 <div className="emojiContainer">
                   <div
                     className="emojiStyle"
-                    onClick={() => rateSong("U+1F525")}
+                    onClick={() => rateSong("🔥")}
                   >
                     <Emoji symbol="🔥" className="emoji" />
                   </div>
                   <div
                     className="emojiStyle"
-                    onClick={() => rateSong("U+1F60D")}
+                    onClick={() => rateSong("😍")}
                   >
                     <Emoji className="emoji" symbol="😍" />
                   </div>
                   <div
                     className="emojiStyle"
-                    onClick={() => rateSong("U+1F44D")}
+                    onClick={() => rateSong("👍")}
                   >
                     <Emoji className="emoji" symbol="👍"></Emoji>
                   </div>
@@ -162,19 +162,19 @@ const MusicPlay = () => {
                 <div className="emojiContainer">
                   <div
                     className="emojiStyle"
-                    onClick={() => rateSong("U+1F44C")}
+                    onClick={() => rateSong("👌")}
                   >
                     <Emoji className="emoji" symbol="👌" />
                   </div>
                   <div
                     className="emojiStyle"
-                    onClick={() => rateSong("U+1F610")}
+                    onClick={() => rateSong("😐")}
                   >
                     <Emoji symbol="😐" className="emoji" />
                   </div>
                   <div
                     className="emojiStyle"
-                    onClick={() => rateSong("U+1F4A9")}
+                    onClick={() => rateSong("💩")}
                   >
                     <Emoji symbol="💩" className="emoji" />
                   </div>
