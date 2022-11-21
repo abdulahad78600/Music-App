@@ -124,8 +124,9 @@ const Login = () => {
           Forgot password
         </a>
       </div>
+     
       </div>
-      <div className="signupButton">
+      <div className="loginButton">
         <MusicButton title="Login" isLoading={isLoading} onClick={signIn} />
       </div>
       <div className="bottom-text">
