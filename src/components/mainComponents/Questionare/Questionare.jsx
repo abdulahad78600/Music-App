@@ -32,13 +32,13 @@ const Questionare = () => {
   });
   const navigates = useNavigate();
   const [music, setmusic] = useState({
-    RB: "",
-    hip_hop: "",
-    pop: "",
-    rock: "",
-    latin: "",
-    country: "",
-    edm: "",
+    RB: "0",
+    hip_hop: "0",
+    pop: "0",
+    rock: "0",
+    latin: "0",
+    country: "0",
+    edm: "0",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -365,10 +365,12 @@ const Questionare = () => {
             type="range"
             id="points"
             name="RB"
+            color="blue"
             value={music.RB}
             onChange={handleOnChangeMusic}
-            min="0"
-            max="8"
+            min="1"
+            max="10"
+            
           />
         </div>
         <br />
@@ -382,7 +384,7 @@ const Questionare = () => {
               name="hip_hop"
               value={music.hip_hop}
               onChange={handleOnChangeMusic}
-              min="0"
+              min="1"
               max="8"
             />
           </div>
@@ -396,7 +398,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="pop"
-              min="0"
+              min="1"
               max="8"
               value={music.pop}
               onChange={handleOnChangeMusic}
@@ -412,7 +414,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="rock"
-              min="0"
+              min="1"
               max="8"
               value={music.rock}
               onChange={handleOnChangeMusic}
@@ -428,7 +430,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="latin"
-              min="0"
+              min="1"
               max="8"
               value={music.latin}
               onChange={handleOnChangeMusic}
@@ -444,7 +446,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="country"
-              min="0"
+              min="1"
               max="8"
               value={music.country}
               onChange={handleOnChangeMusic}
@@ -460,7 +462,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="edm"
-              min="0"
+              min="1"
               max="8"
               value={music.edm}
               onChange={handleOnChangeMusic}
