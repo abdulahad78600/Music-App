@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { auth } from "../../../utils/Firebase";
 import Logo from "../../../assets/images/logo.png";
 import MusicButton from "../../commonComnents/Button";
+import Arrow from "../../../assets/images/arrow.png";
 import { useSnackbar } from "notistack";
 import "./Forget.css";
 
@@ -78,6 +79,14 @@ const Forget = () => {
       <div className="signupButton">
         <MusicButton title="Send Email" isLoading={isLoading} onClick={forget} />
       </div>
+      <div className="bottom-text">
+                <div className="backHeading">
+                <a className="forgetLink" href="./login">
+                  Back to login
+                </a>
+                </div>
+
+              </div>
     </div>
   );
 };

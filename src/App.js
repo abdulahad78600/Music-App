@@ -18,11 +18,20 @@ const App = () => {
             </PublicRoute>
           }
         />
+        
         <Route
           path="/signup"
           element={
             <PublicRoute restricted>
               <Signup />
+            </PublicRoute>
+          }
+        />
+          <Route
+          path="/"
+          element={
+            <PublicRoute restricted>
+              <Login />
             </PublicRoute>
           }
         />

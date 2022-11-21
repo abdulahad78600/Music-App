@@ -159,6 +159,14 @@ const Signup = () => {
       <div className="signupButton">
         <MusicButton title="Signup" isLoading={isLoading} onClick={signUp} />
       </div>
+      <div className="bottom-text">
+                <div className="account-heading">
+                  <h5>Already have an Account?</h5>
+                </div>
+                <a className="signup-link" href="./login">
+                  Login
+                </a>
+              </div>
     </div>
   );
 };

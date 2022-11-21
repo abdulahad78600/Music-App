@@ -469,7 +469,7 @@ const Questionare = () => {
         </div>
       </div>
       <br />
-      <div className="signupButton">
+      <div className="questionButton">
         <MusicButton title="Submit" isLoading={isLoading} onClick={Submit} />
       </div>
     </div>
