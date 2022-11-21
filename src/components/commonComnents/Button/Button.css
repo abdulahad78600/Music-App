@@ -1,0 +1,19 @@
+Button {
+  display: flex;
+  align-items: center;
+  width: 210px;
+  border-radius: 50px !important;
+  background-color: #349ce4 !important;
+  font-family: "Lato" !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 18px !important;
+  height: 33px !important;
+}
+
+.spiner-subs {
+  color: #349ce4;
+  height: 20px;
+  width: 20px;
+}

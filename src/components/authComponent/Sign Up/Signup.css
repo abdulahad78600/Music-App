@@ -1,0 +1,50 @@
+.mainContainer
+{
+    display: flex;
+    justify-content: center;
+}
+.emailInput
+{
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    height: 30;
+}
+.main
+{   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+
+}
+.heading
+{
+color:white
+}
+.signupButton
+{
+    display: flex;
+    justify-content: center !important;
+    margin-top: 10px;
+}
+.buttonStyle
+{
+    width: 207px;
+    border-radius: 50px;
+}
+  body {
+    background-image: url("../../../assets/images/background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+  .signupInput
+{
+  width:200px;
+  height: 30px;
+  border-radius: 25px;
+  border: 1px solid black !important;
+  padding-left: 10px;
+}
+ 

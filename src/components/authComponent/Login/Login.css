@@ -1,0 +1,101 @@
+
+  .lableStyle {
+    display: flex;
+    width: 200px;
+    display: flex;
+    align-items: flex-start;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color:white;
+    height: 30px;
+    
+  } 
+  .heading
+  {
+    display: flex;
+    justify-content: center;
+  }
+.loginInput
+{
+  width:200px;
+  height: 30px;
+  border-radius: 25px;
+  border: 1px solid black !important;
+  padding-left: 10px;
+}
+.errorStyle
+{
+  color: red;
+  font-size: 12px;
+  width:200px;
+  float: left;
+  padding-top: 5px;
+}
+::placeholder
+{
+  padding-left: 5px !important;
+  color: grey;
+  font-size: 11px;
+}
+input{border: 0; outline: 0;}
+
+::name
+{
+  padding-left: 10px !important;
+}
+@media only screen and (max-width:500px){
+ .heading
+ {
+  font-size: 17px !important;
+ } 
+}
+  .logo 
+  {
+    width: 200PX;
+    height: 50px;
+  }
+.mainContainer
+{
+  display: flex;
+  flex-direction: column;
+}
+.logoContainer
+{
+  display: flex;
+  justify-content: center;
+}
+.forget
+{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+.forget-link
+{
+  width: 200px;
+  display: flex;
+  justify-content: end;
+  color:#349ce4;
+  text-decoration: none;
+  font-size: 14px;
+}
+.bottom-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: Lato;
+  font-size: 13px;
+  font-weight: 400;
+  color: white;
+}
+.signup-link {
+  padding-right: 2px;
+  text-decoration: none;
+  padding-left: 5px;
+  color: #349ce4;
+}

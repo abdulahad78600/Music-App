@@ -1,0 +1,40 @@
+.title {
+    margin: 0;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bolder;
+    padding-block: 20px;
+    display: flex;
+    justify-content: center !important;
+  }
+ .logout
+ {
+  width:100%;
+  float:right;
+  padding-top: 0;
+ }
+ 
+  .mainNavbar
+  {
+    display: flex;
+    flex-direction: row !important;
+    padding-top : 10px;
+    align-items: space-between;
+  
+  }
+  .paraColor
+  {
+    float: right;
+    color: white;
+    margin-right: 10px !important;
+    cursor: pointer;
+     margin-top: 5px;
+    
+  }
+  .logoMusic
+  {
+    width: 200PX;
+    height: 50px;
+    padding-left: 10px;
+  }

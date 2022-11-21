@@ -1,24 +1,82 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Reset, Login, Signup, Forget } from "./components/authComponent";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Dashboard, Questionare, MusicPlay } from "./components/mainComponents";
+import PrivateRoute from "./routes/PrivateRouting";
+import PublicRoute from "./routes/PublicRouting";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            <PublicRoute restricted>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute restricted>
+              <Signup />
+            </PublicRoute>
+          }
+        />
+          <Route
+          path="/"
+          element={
+            <PublicRoute restricted>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/reset"
+          element={
+            <PublicRoute restricted>
+              <Reset />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/forget"
+          element={
+            <PublicRoute restricted>
+              <Forget />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/questionare"
+          element={
+            <PrivateRoute>
+              <Questionare />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/musicplay"
+          element={
+            <PrivateRoute>
+              <MusicPlay />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

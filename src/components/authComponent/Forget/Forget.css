@@ -1,0 +1,16 @@
+.arrow
+{
+    width:40px;
+    height:40px;
+    background-color: black;
+}
+.forgetLink {
+    padding-right: 2px;
+    text-decoration: none;
+    padding-left: 5px;
+    color: white;
+  }
+  .backHeading
+  {
+    padding-top: 5px;
+  }
