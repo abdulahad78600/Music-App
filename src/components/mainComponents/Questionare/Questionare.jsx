@@ -160,19 +160,7 @@ const Questionare = () => {
         <span className="mediaStyle">
           What is your favorite style of music?
         </span>
-        {/* <input
-          className="questionInput"
-          placeholder="What is your favorite style of music?"
-          type="text"
-          id="genre"
-          name="genre"
-          value={userData.genre}
-          onChange={handleOnChange}
-        /> */}
         <FormControl>
-          <InputLabel className="selectStyle" variant="standard" htmlFor="uncontrolled-native">
-            Age
-          </InputLabel>
           <NativeSelect
             defaultValue={30}
             name="genre"
