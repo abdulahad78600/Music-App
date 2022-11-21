@@ -18,6 +18,13 @@ const Forget = () => {
     auth
       .sendPasswordResetEmail(userData.email)
       .then((res) => {
+        enqueueSnackbar("Email has been sent ", {
+          anchorOrigin: {
+            horizontal: "right",
+            vertical: "top"
+          },
+          variant: "success"
+        });
         setIsLoading(false);
       })
       .catch((error) => {

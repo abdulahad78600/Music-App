@@ -31,12 +31,9 @@ const Signup = () => {
       .createUserWithEmailAndPassword(userData.email, userData.password)
       .then((res) => {
         saveDataOnFirebase(res.user.uid);
-        setIsLoading(false)
       })
       .catch((error) => {
         setIsLoading(false)
-        console.log("--------", error);
-        console.log("--------", error);
         enqueueSnackbar("Some thing went wrong", {
           anchorOrigin: {
             horizontal: "right",
@@ -53,6 +50,14 @@ const Signup = () => {
       phone: userData.phone,
     });
     if (response.data) {
+      enqueueSnackbar("Account created successfully ", {
+        anchorOrigin: {
+          horizontal: "right",
+          vertical: "top"
+        },
+        variant: "success"
+      });
+      setIsLoading(false)
       navigates("/login");
     } else {
       console.log("--------error");
