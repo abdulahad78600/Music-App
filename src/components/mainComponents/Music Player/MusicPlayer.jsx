@@ -135,7 +135,7 @@ const MusicPlay = () => {
               className="audioStyle"
             />
           ) : !isEnded && isError ? (
-            <h3>There are no songs in the list...</h3>
+            <h3>There are no more songs in the list...</h3>
           ) : (
             <>
               <div className="mainEmoji">
