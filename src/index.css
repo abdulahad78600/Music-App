@@ -30,6 +30,18 @@ input:-internal-autofill-selected
 .css-1ptx2yq-MuiInputBase-root-MuiInput-root:after{
   border-bottom: none !important;
 }
+.css-348fk2{
+display: none;
+}
+.css-13sljp9{
+  background-color: white;
+  height: 34px;
+  width: 208px;
+  border-radius: 38px;
+  display: flex;
+  justify-content: center;
+  padding-left: 12px;
+}
 
 /* .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
   display: none !important;

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { auth } from '../../../utils/Firebase'
+import { auth } from "../../../utils/Firebase";
 import { useNavigate, useLocation } from "react-router-dom";
 import MusicButton from "../../commonComnents/Button";
-import Logo from "../../../assets/images/logo.png"
+import Logo from "../../../assets/images/logo.png";
+import { useSnackbar } from "notistack";
 
-
-const Reset = ({ }) => {
+const Reset = ({}) => {
   const location = useLocation();
   const passwordRegex = /^[a-zA-Z 1-9-0 ~`! ; : @#$%^&*]{8,}$/;
   const [userData, setUserData] = useState({
@@ -13,20 +13,37 @@ const Reset = ({ }) => {
   });
   const navigates = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const resetPassword = async () => {
-    setIsLoading(true)
-    const queryParams = new URLSearchParams(location.search)
+    setIsLoading(true);
+    const queryParams = new URLSearchParams(location.search);
     const oobCode = queryParams.get("oobCode");
-    auth.confirmPasswordReset(oobCode, userData.newPassword).then(res => {
-    setIsLoading(false)
-      navigates("/login")
-    }).catch((error) => {
-    setIsLoading(false)
-      console.log("--------", error)
-    })
-
-  }
+    auth
+      .confirmPasswordReset(oobCode, userData.newPassword)
+      .then((res) => {
+        enqueueSnackbar("Password has been changed ", {
+          anchorOrigin: {
+            horizontal: "right",
+            vertical: "top",
+          },
+          variant: "success",
+        });
+        setIsLoading(false);
+        navigates("/login");
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        enqueueSnackbar("Something went wrong", {
+          anchorOrigin: {
+            horizontal: "right",
+            vertical: "top",
+          },
+          variant: "error",
+        });
+        console.log("--------", error);
+      });
+  };
   const [errorText2, seterrorText2] = useState("");
 
   const handleOnChange = (event) => {
@@ -43,11 +60,11 @@ const Reset = ({ }) => {
   return (
     <div className="main">
       <div className="mainContainer">
-       <div className="logoContainer"> 
-      <img className="logo" src={Logo} />
-      </div>
-      <div>
-        <h1 className="heading">Reset Password </h1>
+        <div className="logoContainer">
+          <img className="logo" src={Logo} />
+        </div>
+        <div>
+          <h1 className="heading">Reset Password </h1>
         </div>
       </div>
       <br />
@@ -68,7 +85,11 @@ const Reset = ({ }) => {
         <br />
       </div>
       <div className="signupButton">
-        <MusicButton title="Reset" isLoading={isLoading} onClick={resetPassword} />
+        <MusicButton
+          title="Reset"
+          isLoading={isLoading}
+          onClick={resetPassword}
+        />
       </div>
     </div>
   );
