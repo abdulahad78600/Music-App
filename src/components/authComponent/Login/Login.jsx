@@ -12,7 +12,7 @@ import "./Login.css";
 const Login = () => {
   const emailRegex =
     /^([+\w-]+(?:\.[+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-  const [userData, setUserData] = useState({  
+  const [userData, setUserData] = useState({
 
     email: "",
     password: "",
@@ -53,7 +53,7 @@ const Login = () => {
           const user = doc.data();
           setIsFilled(user.is_form_filled);
           setIsLoading(false);
-          user.is_form_filled ?  navigates("/musicplay"):navigates("/questionare");
+          user.is_form_filled ? navigates("/musicplay") : navigates("/questionare");
         } else {
           console.log("No such document!");
         }
@@ -118,13 +118,25 @@ const Login = () => {
           onChange={handleOnChange}
         />
       </div>
-      <div>
-        <br />
+      <div className="forget">
+        <div>
+        <a className="forget-link" href="./forget">
+          Forgot password
+        </a>
       </div>
-
+      </div>
       <div className="signupButton">
         <MusicButton title="Login" isLoading={isLoading} onClick={signIn} />
       </div>
+      <div className="bottom-text">
+                <div className="account-heading">
+                  <h5>Dont have an Account?</h5>
+                </div>
+                <a className="signup-link" href="./signup">
+                  Sign up
+                </a>
+              </div>
+
     </div>
   );
 };
