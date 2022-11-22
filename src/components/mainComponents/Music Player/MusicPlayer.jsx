@@ -9,6 +9,7 @@ import ReactAudioPlayer from "react-audio-player";
 import CommentComponent from "../../commonComnents/CommentBox";
 import { getAPI, postAPI } from "../../../utils/api";
 import { useSnackbar } from "notistack";
+import Anime, { anime } from 'react-anime';
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
@@ -18,6 +19,7 @@ const MusicPlay = () => {
   const [song, setSong] = useState({ id: "" });
   const [open, setOpen] = React.useState(false);
   const [isError, setIsError] = useState(false);
+  const [selectedEmoji, setselectedEmoji] = useState();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -42,7 +44,7 @@ const MusicPlay = () => {
 
   useEffect(() => {
     if (ID != "") {
-      setTimeout(()=>{
+      setTimeout(() => {
         getSong();
       }, 2000);
     }
@@ -74,7 +76,7 @@ const MusicPlay = () => {
     });
     console.log("===========submit rating res", response);
     if (response.data.success) {
-
+      setselectedEmoji("")
       enqueueSnackbar("Rating has been submitted", {
         anchorOrigin: {
           horizontal: "right",
@@ -83,7 +85,7 @@ const MusicPlay = () => {
         variant: "success"
       });
       handleOpen();
-    }else{
+    } else {
       enqueueSnackbar("Error in submitting rating", {
         anchorOrigin: {
           horizontal: "right",
@@ -112,7 +114,9 @@ const MusicPlay = () => {
   );
 
   const rateSong = (emoji) => {
+
     submitRating(emoji);
+    setselectedEmoji(emoji);
   };
 
   useEffect(() => {
@@ -141,25 +145,65 @@ const MusicPlay = () => {
             />
           ) : !isEnded && isError ? (
             <>
-            <h3>There are no songs in the list...</h3>
-            <h3>There are no more songs in the list...</h3>
+              <h3>There are no songs in the list...</h3>
+              <h3>There are no more songs in the list...</h3>
             </>
           ) : (
             <>
               <div className="mainEmoji">
                 <div className="emojiContainer">
+
+                  {/* <Anime
+                    easing="easeOutElastic"
+                    loop={true}
+                    duration={1000}
+                    delay={(el, index) => index * 240}
+                    scale={[0.8, 1.5]}
+                  >
+
+                    <div className="blue" />
+                    <div className="green" />
+                    <div className="red" />
+
+                    <div
+                      className="emojiStyle"
+                      onClick={() => rateSong("😍")}
+                    >
+                      <Emoji className="emoji" symbol="😍" />
+                    </div>
+
+                  </Anime> */}
                   <div
                     className="emojiStyle"
-                    onClick={() => rateSong("🔥")}
+                    onClick={() => rateSong("👍")}
                   >
-                    <Emoji symbol="🔥" className="emoji" />
+                    { selectedEmoji==("👍")? (
+                       <Anime
+                       easing="easeOutElastic"
+                       loop={true}
+                       duration={1000}
+                       delay={(el, index) => index * 240}
+                       scale={[0.8, 1.5]}
+                     >
+
+                       <div className="blue" />
+                       <div className="green" />
+                       <div className="red" />
+
+                       <div
+                         className="emojiStyle"
+                         onClick={() => rateSong("👍")}
+                       >
+                         <Emoji className="emoji" symbol="👍" />
+                       </div>
+
+                     </Anime>
+                      
+                    ) : (
+                      <Emoji className="emoji" symbol="👍"></Emoji>
+                    )}
                   </div>
-                  <div
-                    className="emojiStyle"
-                    onClick={() => rateSong("😍")}
-                  >
-                    <Emoji className="emoji" symbol="😍" />
-                  </div>
+
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("👍")}

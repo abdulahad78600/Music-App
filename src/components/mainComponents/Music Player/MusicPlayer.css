@@ -108,9 +108,9 @@
     font-size: 35px;
     cursor: pointer;
   }
-  .emoji:hover {
+  /* .emoji:hover {
     font-size: 45px;
-}
+} */
   .emojiContainer
   {
     display: flex;
