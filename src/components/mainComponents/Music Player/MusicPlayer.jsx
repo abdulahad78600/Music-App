@@ -9,7 +9,7 @@ import ReactAudioPlayer from "react-audio-player";
 import CommentComponent from "../../commonComnents/CommentBox";
 import { getAPI, postAPI } from "../../../utils/api";
 import { useSnackbar } from "notistack";
-import Anime, { anime } from 'react-anime';
+import Anime from 'react-anime';
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
@@ -55,13 +55,7 @@ const MusicPlay = () => {
     if (response.data.success) {
       setSong(response.data);
       setIsError(false);
-      console.log(
-        "========-success",
-        `getNextUserSong?id=${ID}`,
-        response.data
-      );
     } else {
-      console.log("========error");
       setSong({ url: "" });
       setIsError(true);
       setIsEnded(false);
@@ -74,9 +68,7 @@ const MusicPlay = () => {
       song_id: song.id,
       rating: emoji,
     });
-    console.log("===========submit rating res", response);
     if (response.data.success) {
-
       enqueueSnackbar("Rating has been submitted", {
         anchorOrigin: {
           horizontal: "right",
@@ -146,7 +138,6 @@ const MusicPlay = () => {
             />
           ) : !isEnded && isError ? (
             <>
-              <h3>There are no songs in the list...</h3>
               <h3>There are no more songs in the list...</h3>
             </>
           ) : (
