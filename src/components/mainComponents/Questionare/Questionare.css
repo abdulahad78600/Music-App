@@ -46,6 +46,7 @@
 }
 .slider {
   width: 100%;
+  color:blue;
 }
 @media only screen and (max-width: 375px) {
   .mediaStyle {

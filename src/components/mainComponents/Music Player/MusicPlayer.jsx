@@ -19,7 +19,7 @@ const MusicPlay = () => {
   const [song, setSong] = useState({ id: "" });
   const [open, setOpen] = React.useState(false);
   const [isError, setIsError] = useState(false);
-  const [selectedEmoji, setselectedEmoji] = useState();
+  const [selectedEmoji, setselectedEmoji] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -161,9 +161,9 @@ const MusicPlay = () => {
                       <Anime
                         easing="easeOutElastic"
                         loop={true}
-                        duration={500}
-                        delay={(el, index) => index * 500}
-                        scale={[0.8, 1.8]}
+                        duration={2000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
                       >
 
                         <div className="blue" />
@@ -221,8 +221,8 @@ const MusicPlay = () => {
                       <Anime
                         easing="easeOutElastic"
                         loop={true}
-                        duration={1000}
-                        delay={(el, index) => index * 240}
+                        duration={2000}
+                        delay={(el, index) => index * 250}
                         scale={[0.8, 1.5]}
                       >
 
