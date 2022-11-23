@@ -136,6 +136,17 @@
     border-radius:10px ;
     background-color: black;
   }
+  .emojiStyleSub
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:2px solid grey;
+    height:65px;
+    width:65px;
+    border-radius:10px ;
+    background-color: black;
+  }
   .emojiContain
   {
     display: contents;

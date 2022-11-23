@@ -85,7 +85,6 @@ const MusicPlay = () => {
         variant: "success"
       });
       handleOpen();
-      setselectedEmoji("");
     } else {
       enqueueSnackbar("Error in submitting rating", {
         anchorOrigin: {
@@ -100,6 +99,7 @@ const MusicPlay = () => {
   const getNextSong = () => {
     setIsEnded(false);
     getSong();
+    setselectedEmoji("");
     handleClose();
   };
 
@@ -171,7 +171,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("🔥")}
                         >
                           <Emoji className="emoji" symbol="🔥" />
@@ -201,7 +201,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("😍")}
                         >
                           <Emoji className="emoji" symbol="😍" />
@@ -231,7 +231,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("👍")}
                         >
                           <Emoji className="emoji" symbol="👍" />
@@ -264,7 +264,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("👌")}
                         >
                           <Emoji className="emoji" symbol="👌" />
@@ -295,7 +295,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("😐")}
                         >
                           <Emoji className="emoji" symbol="😐" />
@@ -325,7 +325,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("💩")}
                         >
                           <Emoji className="emoji" symbol="💩" />
