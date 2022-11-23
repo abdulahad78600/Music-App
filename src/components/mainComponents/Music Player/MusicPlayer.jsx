@@ -69,13 +69,6 @@ const MusicPlay = () => {
       rating: emoji,
     });
     if (response.data.success) {
-      enqueueSnackbar("Rating has been submitted", {
-        anchorOrigin: {
-          horizontal: "right",
-          vertical: "top"
-        },
-        variant: "success"
-      });
       handleOpen();
       setselectedEmoji("");
     } else {
@@ -347,7 +340,7 @@ const MusicPlay = () => {
       >
         <Box className="modalStyle">
           <div>
-            <p>Do you want to play next song?</p>
+            <p className="nextTextStyling">Your response has been submitted, do you want to play next song?</p>
             <div className="buttonsContainer">
               <div className="noStyle" onClick={handleClose}>
                 No
