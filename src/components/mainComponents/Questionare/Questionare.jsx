@@ -32,13 +32,13 @@ const Questionare = () => {
   });
   const navigates = useNavigate();
   const [music, setmusic] = useState({
-    RB: "",
-    hip_hop: "",
-    pop: "",
-    rock: "",
-    latin: "",
-    country: "",
-    edm: "",
+    RB: "0",
+    hip_hop: "0",
+    pop: "0",
+    rock: "0",
+    latin: "0",
+    country: "0",
+    edm: "0",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -147,7 +147,7 @@ const Questionare = () => {
         <span className="lableStyle">Cell Phone#</span>
         <input
           className="questionInput"
-          placeholder="Enter your cellphonenumber"
+          placeholder="Enter your Cell Phonenumber"
           type="text"
           id="phone"
           name="phone"
@@ -171,10 +171,12 @@ const Questionare = () => {
               id: "genre",
             }}
           >
-            <option value={"Pop"}>Pop</option>
-            <option value={"Hip Hop"}>Hip Hop</option>
-            <option value={"Rock"}>Rock</option>
-            <option value={"Wagera"}>Wagera</option>
+            <option value={"R&B"}>RB</option>
+            <option value={"country"}>Country</option>
+            <option value={"hip hop"}>Hip Hop</option>
+            <option value={"latin"}>Latin</option>
+            <option value={"pop"}>Pop</option>
+            <option value={"rock"}>Rock</option>
           </NativeSelect>
         </FormControl>
       </div>
@@ -186,7 +188,7 @@ const Questionare = () => {
         <br />
         <input
           className="questionInput"
-          placeholder="Which social social_media_apps apps do you regularly use?"
+          placeholder=" Enter Social Media Apps"
           type="text"
           id="social_media_apps"
           name="social_media_apps"
@@ -200,7 +202,7 @@ const Questionare = () => {
         <br />
         <input
           className="questionInput"
-          placeholder="What city/state were you born in?"
+          placeholder="Born city?"
           type="text"
           id="city_of_birth"
           name="city_of_birth"
@@ -214,7 +216,7 @@ const Questionare = () => {
         <br />
         <input
           className="questionInput"
-          placeholder="What city/state were you born in?"
+          placeholder=" Enter Current City"
           type="text"
           id="current_city"
           name="current_city"
@@ -229,7 +231,7 @@ const Questionare = () => {
         </span>
         <input
           className="questionInput"
-          placeholder="What college are you currently attending?"
+          placeholder=" Enter Current College"
           type="text"
           id="current_college_name"
           name="current_college_name"
@@ -244,7 +246,7 @@ const Questionare = () => {
         </span>
         <input
           className="questionInput"
-          placeholder="What year of college are you currently in?  "
+          placeholder=" Enter Current College Year  "
           type="text"
           id="current_college_year"
           name="current_college_year"
@@ -257,7 +259,7 @@ const Questionare = () => {
         <span className="mediaStyle">Do you go to concerts?</span>
         <input
           className="questionInput"
-          placeholder="Do you go to concerts?"
+          placeholder="Consert?"
           type="text"
           id=" attend_consert"
           name="attend_consert"
@@ -272,7 +274,7 @@ const Questionare = () => {
         </span>
         <input
           className="questionInput"
-          placeholder="What concerts have you attended in the last 12 months?"
+          placeholder=" Enter Last Consert Attended"
           type="text"
           id="concerts_attended_last_year"
           name="concerts_attended_last_year"
@@ -285,7 +287,7 @@ const Questionare = () => {
         <span className="mediaStyle">How often do you listen to music?</span>
         <input
           className="questionInput"
-          placeholder="How often do you listen to music?"
+          placeholder="Music"
           type="text"
           id="music_listening_frequency"
           name="music_listening_frequency"
@@ -301,8 +303,7 @@ const Questionare = () => {
         <input
           className="questionInput"
           placeholder="
-           How many hours per week do you listen to music?
-            "
+           Music/Week"
           type="text"
           id="frequency_per_week"
           name="frequency_per_week"
@@ -315,7 +316,7 @@ const Questionare = () => {
         <span className="mediaStyle">What brand of sneakers do you like??</span>
         <input
           className="questionInput"
-          placeholder="What brand of sneakers do you like??"
+          placeholder="Favorite Sneaker Brand?"
           type="text"
           id="favorite_sneakers_brand"
           name="favorite_sneakers_brand"
@@ -328,7 +329,7 @@ const Questionare = () => {
         <span className="mediaStyle">What brand of clothing do you like??</span>
         <input
           className="questionInput"
-          placeholder="What brand of clothing do you like??"
+          placeholder="Favorite Clothing Brand?"
           type="text"
           id="favorite_clothing_brand"
           name="favorite_clothing_brand"
@@ -349,14 +350,17 @@ const Questionare = () => {
         <div className="textColor">R&B</div>
         <div>
           <input
+
             className="slider"
             type="range"
             id="points"
             name="RB"
+            color="blue"
             value={music.RB}
             onChange={handleOnChangeMusic}
-            min="0"
-            max="8"
+            min="1"
+            max="10"
+            
           />
         </div>
         <br />
@@ -370,7 +374,7 @@ const Questionare = () => {
               name="hip_hop"
               value={music.hip_hop}
               onChange={handleOnChangeMusic}
-              min="0"
+              min="1"
               max="8"
             />
           </div>
@@ -384,7 +388,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="pop"
-              min="0"
+              min="1"
               max="8"
               value={music.pop}
               onChange={handleOnChangeMusic}
@@ -400,7 +404,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="rock"
-              min="0"
+              min="1"
               max="8"
               value={music.rock}
               onChange={handleOnChangeMusic}
@@ -416,7 +420,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="latin"
-              min="0"
+              min="1"
               max="8"
               value={music.latin}
               onChange={handleOnChangeMusic}
@@ -432,7 +436,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="country"
-              min="0"
+              min="1"
               max="8"
               value={music.country}
               onChange={handleOnChangeMusic}
@@ -448,7 +452,7 @@ const Questionare = () => {
               type="range"
               id="points"
               name="edm"
-              min="0"
+              min="1"
               max="8"
               value={music.edm}
               onChange={handleOnChangeMusic}

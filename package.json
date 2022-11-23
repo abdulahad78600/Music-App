@@ -16,6 +16,7 @@
     "firebase": "^9.13.0",
     "notistack": "^2.0.8",
     "react": "^18.2.0",
+    "react-anime": "^4.1.1",
     "react-audio-player": "^0.17.0",
     "react-comments-section": "^2.0.10",
     "react-dom": "^18.2.0",

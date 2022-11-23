@@ -9,6 +9,7 @@ import ReactAudioPlayer from "react-audio-player";
 import CommentComponent from "../../commonComnents/CommentBox";
 import { getAPI, postAPI } from "../../../utils/api";
 import { useSnackbar } from "notistack";
+import Anime from 'react-anime';
 import "./MusicPlayer.css";
 
 const MusicPlay = () => {
@@ -18,6 +19,7 @@ const MusicPlay = () => {
   const [song, setSong] = useState({ id: "" });
   const [open, setOpen] = React.useState(false);
   const [isError, setIsError] = useState(false);
+  const [selectedEmoji, setselectedEmoji] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -42,7 +44,7 @@ const MusicPlay = () => {
 
   useEffect(() => {
     if (ID != "") {
-      setTimeout(()=>{
+      setTimeout(() => {
         getSong();
       }, 2000);
     }
@@ -53,13 +55,7 @@ const MusicPlay = () => {
     if (response.data.success) {
       setSong(response.data);
       setIsError(false);
-      console.log(
-        "========-success",
-        `getNextUserSong?id=${ID}`,
-        response.data
-      );
     } else {
-      console.log("========error");
       setSong({ url: "" });
       setIsError(true);
       setIsEnded(false);
@@ -72,7 +68,6 @@ const MusicPlay = () => {
       song_id: song.id,
       rating: emoji,
     });
-    console.log("===========submit rating res", response);
     if (response.data.success) {
       enqueueSnackbar("Rating has been submitted", {
         anchorOrigin: {
@@ -82,7 +77,8 @@ const MusicPlay = () => {
         variant: "success"
       });
       handleOpen();
-    }else{
+      setselectedEmoji("");
+    } else {
       enqueueSnackbar("Error in submitting rating", {
         anchorOrigin: {
           horizontal: "right",
@@ -111,8 +107,14 @@ const MusicPlay = () => {
   );
 
   const rateSong = (emoji) => {
+
     submitRating(emoji);
+    setselectedEmoji(emoji);
   };
+
+  useEffect(() => {
+    console.log("==========is ended is error", isEnded, isError);
+  }, [isEnded, isError]);
 
   return (
     <div>
@@ -135,7 +137,9 @@ const MusicPlay = () => {
               className="audioStyle"
             />
           ) : !isEnded && isError ? (
-            <h3>There are no more songs in the list...</h3>
+            <>
+              <h3>There are no more songs in the list...</h3>
+            </>
           ) : (
             <>
               <div className="mainEmoji">
@@ -144,40 +148,188 @@ const MusicPlay = () => {
                     className="emojiStyle"
                     onClick={() => rateSong("🔥")}
                   >
-                    <Emoji symbol="🔥" className="emoji" />
+                    {selectedEmoji == ("🔥") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={2000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("🔥")}
+                        >
+                          <Emoji className="emoji" symbol="🔥" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="🔥"></Emoji>
+                    )}
                   </div>
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("😍")}
                   >
-                    <Emoji className="emoji" symbol="😍" />
+                    {selectedEmoji == ("😍") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("😍")}
+                        >
+                          <Emoji className="emoji" symbol="😍" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="😍"></Emoji>
+                    )}
                   </div>
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("👍")}
                   >
-                    <Emoji className="emoji" symbol="👍"></Emoji>
+                    {selectedEmoji == ("👍") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={2000}
+                        delay={(el, index) => index * 250}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("👍")}
+                        >
+                          <Emoji className="emoji" symbol="👍" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="👍"></Emoji>
+                    )}
                   </div>
+
                 </div>
                 <div className="emojiContainer">
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("👌")}
                   >
-                    <Emoji className="emoji" symbol="👌" />
+                    {selectedEmoji == ("👌") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("👌")}
+                        >
+                          <Emoji className="emoji" symbol="👌" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="👌"></Emoji>
+                    )}
                   </div>
+             
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("😐")}
                   >
-                    <Emoji symbol="😐" className="emoji" />
+                    {selectedEmoji == ("😐") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("😐")}
+                        >
+                          <Emoji className="emoji" symbol="😐" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="😐"></Emoji>
+                    )}
                   </div>
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("💩")}
                   >
-                    <Emoji symbol="💩" className="emoji" />
+                    {selectedEmoji == ("💩") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("💩")}
+                        >
+                          <Emoji className="emoji" symbol="💩" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="💩"></Emoji>
+                    )}
                   </div>
+
+
                 </div>
               </div>
               <div>
