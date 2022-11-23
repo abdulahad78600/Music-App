@@ -76,7 +76,7 @@ const MusicPlay = () => {
     });
     console.log("===========submit rating res", response);
     if (response.data.success) {
-      setselectedEmoji("")
+
       enqueueSnackbar("Rating has been submitted", {
         anchorOrigin: {
           horizontal: "right",
@@ -85,6 +85,7 @@ const MusicPlay = () => {
         variant: "success"
       });
       handleOpen();
+      setselectedEmoji("");
     } else {
       enqueueSnackbar("Error in submitting rating", {
         anchorOrigin: {
@@ -152,84 +153,192 @@ const MusicPlay = () => {
             <>
               <div className="mainEmoji">
                 <div className="emojiContainer">
-
-                  {/* <Anime
-                    easing="easeOutElastic"
-                    loop={true}
-                    duration={1000}
-                    delay={(el, index) => index * 240}
-                    scale={[0.8, 1.5]}
+                  <div
+                    className="emojiStyle"
+                    onClick={() => rateSong("🔥")}
                   >
+                    {selectedEmoji == ("🔥") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={500}
+                        delay={(el, index) => index * 500}
+                        scale={[0.8, 1.8]}
+                      >
 
-                    <div className="blue" />
-                    <div className="green" />
-                    <div className="red" />
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
 
-                    <div
-                      className="emojiStyle"
-                      onClick={() => rateSong("😍")}
-                    >
-                      <Emoji className="emoji" symbol="😍" />
-                    </div>
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("🔥")}
+                        >
+                          <Emoji className="emoji" symbol="🔥" />
+                        </div>
 
-                  </Anime> */}
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="🔥"></Emoji>
+                    )}
+                  </div>
+                  <div
+                    className="emojiStyle"
+                    onClick={() => rateSong("😍")}
+                  >
+                    {selectedEmoji == ("😍") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("😍")}
+                        >
+                          <Emoji className="emoji" symbol="😍" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="😍"></Emoji>
+                    )}
+                  </div>
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("👍")}
                   >
-                    { selectedEmoji==("👍")? (
-                       <Anime
-                       easing="easeOutElastic"
-                       loop={true}
-                       duration={1000}
-                       delay={(el, index) => index * 240}
-                       scale={[0.8, 1.5]}
-                     >
+                    {selectedEmoji == ("👍") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
 
-                       <div className="blue" />
-                       <div className="green" />
-                       <div className="red" />
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
 
-                       <div
-                         className="emojiStyle"
-                         onClick={() => rateSong("👍")}
-                       >
-                         <Emoji className="emoji" symbol="👍" />
-                       </div>
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("👍")}
+                        >
+                          <Emoji className="emoji" symbol="👍" />
+                        </div>
 
-                     </Anime>
-                      
+                      </Anime>
+
                     ) : (
                       <Emoji className="emoji" symbol="👍"></Emoji>
                     )}
                   </div>
 
-                  <div
-                    className="emojiStyle"
-                    onClick={() => rateSong("👍")}
-                  >
-                    <Emoji className="emoji" symbol="👍"></Emoji>
-                  </div>
                 </div>
                 <div className="emojiContainer">
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("👌")}
                   >
-                    <Emoji className="emoji" symbol="👌" />
+                    {selectedEmoji == ("👌") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("👌")}
+                        >
+                          <Emoji className="emoji" symbol="👌" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="👌"></Emoji>
+                    )}
                   </div>
+             
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("😐")}
                   >
-                    <Emoji symbol="😐" className="emoji" />
+                    {selectedEmoji == ("😐") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("😐")}
+                        >
+                          <Emoji className="emoji" symbol="😐" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="😐"></Emoji>
+                    )}
                   </div>
                   <div
                     className="emojiStyle"
                     onClick={() => rateSong("💩")}
                   >
-                    <Emoji symbol="💩" className="emoji" />
+                    {selectedEmoji == ("💩") ? (
+                      <Anime
+                        easing="easeOutElastic"
+                        loop={true}
+                        duration={1000}
+                        delay={(el, index) => index * 240}
+                        scale={[0.8, 1.5]}
+                      >
+
+                        <div className="blue" />
+                        <div className="green" />
+                        <div className="red" />
+
+                        <div
+                          className="emojiStyle"
+                          onClick={() => rateSong("💩")}
+                        >
+                          <Emoji className="emoji" symbol="💩" />
+                        </div>
+
+                      </Anime>
+
+                    ) : (
+                      <Emoji className="emoji" symbol="💩"></Emoji>
+                    )}
                   </div>
+
+
                 </div>
               </div>
               <div>
