@@ -147,7 +147,7 @@ const Questionare = () => {
         <span className="lableStyle">Cell Phone#</span>
         <input
           className="questionInput"
-          placeholder="Enter your cellphonenumber"
+          placeholder="Enter your Cell Phonenumber"
           type="text"
           id="phone"
           name="phone"
@@ -188,7 +188,7 @@ const Questionare = () => {
         <br />
         <input
           className="questionInput"
-          placeholder="Social Media Apps"
+          placeholder=" Enter Social Media Apps"
           type="text"
           id="social_media_apps"
           name="social_media_apps"
@@ -216,7 +216,7 @@ const Questionare = () => {
         <br />
         <input
           className="questionInput"
-          placeholder="Current City"
+          placeholder=" Enter Current City"
           type="text"
           id="current_city"
           name="current_city"
@@ -231,7 +231,7 @@ const Questionare = () => {
         </span>
         <input
           className="questionInput"
-          placeholder="Current College"
+          placeholder=" Enter Current College"
           type="text"
           id="current_college_name"
           name="current_college_name"
@@ -246,7 +246,7 @@ const Questionare = () => {
         </span>
         <input
           className="questionInput"
-          placeholder="Current College Year  "
+          placeholder=" Enter Current College Year  "
           type="text"
           id="current_college_year"
           name="current_college_year"
@@ -274,7 +274,7 @@ const Questionare = () => {
         </span>
         <input
           className="questionInput"
-          placeholder="Last Consert Attended"
+          placeholder=" Enter Last Consert Attended"
           type="text"
           id="concerts_attended_last_year"
           name="concerts_attended_last_year"
@@ -350,7 +350,7 @@ const Questionare = () => {
         <div className="textColor">R&B</div>
         <div>
           <input
-          
+
             className="slider"
             type="range"
             id="points"
