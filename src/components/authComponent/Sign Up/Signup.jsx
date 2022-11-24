@@ -85,7 +85,8 @@ const Signup = () => {
       } else {
         setErrorText3("Only characters are allowed");
       }
-    } else {
+    }
+    else {
       setErrorText("");
     }
   };
@@ -127,7 +128,6 @@ const Signup = () => {
           onChange={handleOnChange}
         />
 
-        <div className="errorStyle"> {errorText3}</div>
       </div>
       <br />
       <div className="emailInput">
