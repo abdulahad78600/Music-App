@@ -21,7 +21,11 @@ const MusicPlay = () => {
   const [isError, setIsError] = useState(false);
   const [selectedEmoji, setselectedEmoji] = useState(true);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () =>
+  {
+   setOpen(false)
+   setselectedEmoji(false);
+  }
   const { enqueueSnackbar } = useSnackbar();
 
   const onPause = (e) => {
@@ -341,7 +345,7 @@ const MusicPlay = () => {
       </div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={handleClose }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
