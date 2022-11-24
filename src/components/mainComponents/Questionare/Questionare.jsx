@@ -171,9 +171,9 @@ const Questionare = () => {
               id: "genre",
             }}
           >
-            <option value={"RB"}>RB</option>
+            <option value={"R&B"}>RB</option>
             <option value={"country"}>Country</option>
-            <option value={"hip_hop"}>Hip Hop</option>
+            <option value={"hip hop"}>Hip Hop</option>
             <option value={"latin"}>Latin</option>
             <option value={"pop"}>Pop</option>
             <option value={"rock"}>Rock</option>
