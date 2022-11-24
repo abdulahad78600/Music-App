@@ -21,7 +21,11 @@ const MusicPlay = () => {
   const [isError, setIsError] = useState(false);
   const [selectedEmoji, setselectedEmoji] = useState(true);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () =>
+  {
+   setOpen(false)
+   setselectedEmoji(false);
+  }
   const { enqueueSnackbar } = useSnackbar();
 
   const onPause = (e) => {
@@ -70,7 +74,6 @@ const MusicPlay = () => {
     });
     if (response.data.success) {
       handleOpen();
-      setselectedEmoji("");
     } else {
       enqueueSnackbar("Error in submitting rating", {
         anchorOrigin: {
@@ -85,6 +88,7 @@ const MusicPlay = () => {
   const getNextSong = () => {
     setIsEnded(false);
     getSong();
+    setselectedEmoji("");
     handleClose();
   };
 
@@ -155,7 +159,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("🔥")}
                         >
                           <Emoji className="emoji" symbol="🔥" />
@@ -185,7 +189,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("😍")}
                         >
                           <Emoji className="emoji" symbol="😍" />
@@ -215,7 +219,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("👍")}
                         >
                           <Emoji className="emoji" symbol="👍" />
@@ -248,7 +252,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("👌")}
                         >
                           <Emoji className="emoji" symbol="👌" />
@@ -279,7 +283,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("😐")}
                         >
                           <Emoji className="emoji" symbol="😐" />
@@ -309,7 +313,7 @@ const MusicPlay = () => {
                         <div className="red" />
 
                         <div
-                          className="emojiStyle"
+                          className="emojiStyleSub"
                           onClick={() => rateSong("💩")}
                         >
                           <Emoji className="emoji" symbol="💩" />
@@ -334,7 +338,7 @@ const MusicPlay = () => {
       </div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={handleClose }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
