@@ -38,7 +38,7 @@ const Questionare = () => {
     rock: "0",
     latin: "0",
     country: "0",
-    edm: "0",
+    EDM: "0",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -148,7 +148,7 @@ const Questionare = () => {
         <input
           className="questionInput"
           placeholder="Enter your Cell Phonenumber"
-          type="text"
+          type="text" required
           id="phone"
           name="phone"
           value={userData.phone}
@@ -171,12 +171,13 @@ const Questionare = () => {
               id: "genre",
             }}
           >
-            <option value={"R&B"}>RB</option>
+            <option value={"R&B"}>R&B</option>
             <option value={"country"}>Country</option>
             <option value={"hip hop"}>Hip Hop</option>
             <option value={"latin"}>Latin</option>
             <option value={"pop"}>Pop</option>
             <option value={"rock"}>Rock</option>
+            <option value={"EDM"}>EDM</option>
           </NativeSelect>
         </FormControl>
       </div>
@@ -445,16 +446,16 @@ const Questionare = () => {
         </div>{" "}
         <br />
         <div className="rangeItems">
-          <div className="textColor">edm</div>
+          <div className="textColor">EDM</div>
           <div>
             <input
               className="slider"
               type="range"
               id="points"
-              name="edm"
+              name="EDM"
               min="1"
               max="8"
-              value={music.edm}
+              value={music.EDM}
               onChange={handleOnChangeMusic}
             />
           </div>
