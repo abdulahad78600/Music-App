@@ -30,7 +30,7 @@ const Questionare = () => {
     favorite_clothing_brand: "",
     genre: "Pop",
     zipcode: "",
-    ateendingCollege: "",
+    attendingCollege: "",
     musicHours: "",
     states: "",
     rank_genres: {},
@@ -151,6 +151,7 @@ const Questionare = () => {
             backgroundColor: "white",
             borderRadius: "30px",
           }}
+          onChange={handleOnChange}
         >
           <option value="Asian">Asian</option>
           <option value="Black">Black</option>
@@ -205,23 +206,24 @@ const Questionare = () => {
       <br />
       <div className="emailInput">
         <span className="lableStyle">State</span>
-        <select
+        <NativeSelect
           className="dropDown"
-          name="states"
-          id="states"
-          value={userData.states}
+          name="current_city"
+          id="current_city"
+          value={userData.current_city}
           style={{
             width: "220px",
             height: "32px",
             backgroundColor: "white",
             borderRadius: "30px",
           }}
+          onChange={handleOnChange}
         >
           <option value="Alabama.">Alabama.</option>
           <option value="Alaska.">Alaska.</option>
           <option value="California.">California</option>
           <option value="Colorado">Colorado</option>
-        </select>
+        </NativeSelect>
       </div>
       <br />
       <div className="emailInput">
@@ -245,7 +247,7 @@ const Questionare = () => {
             type="radio"
             id="attendingCollege"
             name="attendingCollege"
-            value={userData.ateendingCollege}
+            value={userData.attendingCollege}
           />
           <label className="collegeLabel" for="male">
             Yes
@@ -256,7 +258,7 @@ const Questionare = () => {
             type="radio"
             id="attendingCollege"
             name="attendingCollege"
-            value={userData.ateendingCollege}
+            value={userData.attendingCollege}
           />
           <label className="collegeLabel" for="female">
             No
@@ -274,9 +276,9 @@ const Questionare = () => {
           className="questionInput"
           placeholder="what college are you attending"
           type="text"
-          id="birth_date"
-          name="birth_date"
-          value={userData.ateendingCollege}
+          id="current_college_name"
+          name="current_college_name"
+          value={userData.current_college_name}
           onChange={handleOnChange}
         />
       </div>
@@ -347,7 +349,7 @@ const Questionare = () => {
           <div>
             <select
               className="hip_hop"
-              name="RB"
+              name="hip_hop"
               id="points"
               value={music.hip_hop}
               onChange={handleOnChangeMusic}
@@ -375,7 +377,7 @@ const Questionare = () => {
           <div>
             <select
               className="pop"
-              name="Pop"
+              name="pop"
               id="points"
               value={music.pop}
               onChange={handleOnChangeMusic}
