@@ -104,12 +104,12 @@
   flex-direction: row;
   width:210px;
 }
-.radiobox
+.radioBoxGender
 {
   display: flex;
   flex-direction: row;
   width:210px;
-  padding-top: 5px;
+  padding-bottom: 10px;
 }
 .dropdown
 {
