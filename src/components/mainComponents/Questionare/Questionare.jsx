@@ -67,6 +67,7 @@ const Questionare = () => {
       rank_genres: music,
       user_id: user.auth.currentUser.uid,
     };
+    console.log("=======questions answer" , data)
     const res = await db
       .collection("survey_response")
       .add(data)
@@ -167,7 +168,7 @@ const Questionare = () => {
         <input
           className="questionInput"
           placeholder="Enter your birth_date"
-          type="text"
+          type="date"
           id="birth_date"
           name="birth_date"
           value={userData.birth_date}
@@ -203,7 +204,7 @@ const Questionare = () => {
       </div>
       <br />
       <div className="emailInput">
-        <span className="lableStyle">Ethenicity</span>
+        <span className="lableStyle">State</span>
         <select
           className="dropDown"
           name="states"
@@ -228,9 +229,9 @@ const Questionare = () => {
         <input
           className="questionInput"
           placeholder="Enter your zipcode"
-          type="date"
-          id="birth_date"
-          name="birth_date"
+          type="text"
+          id="zipcode"
+          name="zipcode"
           value={userData.zipcode}
           onChange={handleOnChange}
         />
