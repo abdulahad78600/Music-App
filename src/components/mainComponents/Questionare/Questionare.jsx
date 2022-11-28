@@ -29,6 +29,10 @@ const Questionare = () => {
     favorite_sneakers_brand: "",
     favorite_clothing_brand: "",
     genre: "Pop",
+    zipcode: "",
+    ateendingCollege: "",
+    musicHours:"",
+    states:"",
     rank_genres: {},
   });
   const navigates = useNavigate();
@@ -107,30 +111,74 @@ const Questionare = () => {
       <br />
       <div className="emailInput">
         <span className="lableStyle">Gender</span>
+        <div className="radioBox">
+          <input type="radio" id="gender" name="gender" value={userData.gender} />
+          <label className="genderLabel" for="male">Male</label> <br></br>
+        </div>
+        <br></br>
+        <div className="radioBox">
+          <input type="radio" id="gender" name="gender" value={userData.gender} />
+          <label className="genderLabel" for="female">Female</label> <br></br>
+        </div>
+      </div>
+      <br />
+      <div className="emailInput">
+        <span className="lableStyle">Ethenicity</span>
+        <label for="ethnicity">Enter ethnicity:</label>
+
+        <select className="dropDown" name="ethnicity" id="ethnicity" value={userData.ethnicity} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+          <option value="Asian">Asian</option>
+          <option value="Black">Black</option>
+          <option value="Hispanic">Hispanic</option>
+          <option value="Native">Native</option>
+          <option value="American">American</option>
+          <option value="Native Hawaiian">Native Hawaiian</option>
+          <option value="Other">Other</option>
+          <option value="White">White</option>
+        </select>
+      </div>
+      <br />
+      <div className="emailInput">
+        <span className="lableStyle">Zipcode</span>
         <input
           className="questionInput"
-          placeholder="Enter your gender"
+          placeholder="Enter your zipcode"
           type="text"
-          id="gender"
-          name="gender"
-          value={userData.gender}
+          id="birth_date"
+          name="birth_date"
+          value={userData.zipcode}
           onChange={handleOnChange}
         />
       </div>
       <br />
       <div className="emailInput">
-        <span className="lableStyle">Ethenicity</span>
+        <span className="lableStyleCollege">Are you attending college?</span>
+        <div className="radioBox">
+          <input type="radio" id="attendingCollege" name="attendingCollege" value={userData.ateendingCollege} />
+          <label className="collegeLabel" for="male">Yes</label> <br></br>
+        </div>
+        <br></br>
+        <div className="radioBox">
+          <input type="radio" id="attendingCollege" name="attendingCollege" value={userData.ateendingCollege} />
+          <label className="collegeLabel" for="female">No</label> <br></br>
+        </div>
+      </div>
+      <br></br>
+      <div className="emailInput">
+        <span className="lableStyleCollege">What College are you attending?</span>
+        <br></br>
         <input
           className="questionInput"
-          placeholder="Enter your ethnicity"
+          placeholder="what college are you attending"
           type="text"
-          id="ethnicity"
-          name="ethnicity"
-          value={userData.ethnicity}
+          id="birth_date"
+          name="birth_date"
+          value={userData.ateendingCollege}
           onChange={handleOnChange}
         />
+        
       </div>
-      <br />
+      <br></br>
       <div className="emailInput">
         <span className="lableStyle">Birthdate</span>
         <input
@@ -170,6 +218,18 @@ const Questionare = () => {
         />
       </div>
       <br />
+      <div className="emailInput">
+        <span className="lableStyle">Ethenicity</span>
+        <label for="ethnicity">Enter ethnicity:</label>
+
+        <select className="dropDown" name="states" id="states" value={userData.states} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+          <option value="Alabama.">Alabama.</option>
+          <option value="Alaska.">Alaska.</option>
+          <option value="California.">California</option>
+          <option value="Colorado">Colorado</option>
+        </select>
+        </div>
+    <br></br>
       <div className="emailInput">
         <span className="mediaStyle">
           What is your favorite style of music?
@@ -218,7 +278,7 @@ const Questionare = () => {
         <input
           className="questionInput"
           placeholder="Born city?"
-          type="text"
+          type="date"
           id="city_of_birth"
           name="city_of_birth"
           value={userData.city_of_birth}
@@ -364,117 +424,139 @@ const Questionare = () => {
       <div className="rangeItems">
         <div className="textColor">R&B</div>
         <div>
-          <input
-
-            className="slider"
-            type="range"
-            id="points"
-            name="RB"
-            color="blue"
-            value={music.RB}
-            onChange={handleOnChangeMusic}
-            min="1"
-            max="10"
-            
-          />
+          <select className="dropDown" name="RB" id="points" value={music.RB} onChange={handleOnChangeMusic} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
         </div>
         <br />
         <div className="rangeItems">
           <div className="textColor">Hip Hop</div>
+          <br></br>
           <div>
-            <input
-              className="slider"
-              type="range"
-              id="points"
-              name="hip_hop"
-              value={music.hip_hop}
-              onChange={handleOnChangeMusic}
-              min="1"
-              max="8"
-            />
+            <select className="hip_hop" name="RB" id="points" value={music.hip_hop} onChange={handleOnChangeMusic} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
           </div>
         </div>{" "}
         <br />
         <div className="rangeItems">
-          <div className="textColor">pop</div>
+          <div className="textColor">Pop</div>
           <div>
-            <input
-              className="slider"
-              type="range"
-              id="points"
-              name="pop"
-              min="1"
-              max="8"
-              value={music.pop}
-              onChange={handleOnChangeMusic}
-            />
+          <select className="pop" name="Pop" id="points" value={music.pop} onChange={handleOnChangeMusic} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
           </div>
         </div>{" "}
         <br />
         <div className="rangeItems">
-          <div className="textColor">rock</div>
+          <div className="textColor">Rock</div>
           <div>
-            <input
-              className="slider"
-              type="range"
-              id="points"
-              name="rock"
-              min="1"
-              max="8"
-              value={music.rock}
-              onChange={handleOnChangeMusic}
-            />
+          <select className="rock" name="rock" id="points" value={music.rock} onChange={handleOnChangeMusic} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
           </div>
         </div>{" "}
         <br />
         <div className="rangeItems">
-          <div className="textColor">latin</div>
+          <div className="textColor">Latin</div>
           <div>
-            <input
-              className="slider"
-              type="range"
-              id="points"
-              name="latin"
-              min="1"
-              max="8"
-              value={music.latin}
-              onChange={handleOnChangeMusic}
-            />
+          <select className="latin" name="latin" id="points" value={music.latin} onChange={handleOnChangeMusic} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
           </div>
         </div>{" "}
         <br />
         <div className="rangeItems">
           <div className="textColor">Countrty</div>
           <div>
-            <input
-              className="slider"
-              type="range"
-              id="points"
-              name="country"
-              min="1"
-              max="8"
-              value={music.country}
-              onChange={handleOnChangeMusic}
-            />
+          <select className="country" name="country" id="points" value={music.country} onChange={handleOnChangeMusic} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
           </div>
         </div>{" "}
         <br />
         <div className="rangeItems">
           <div className="textColor">EDM</div>
           <div>
-            <input
-              className="slider"
-              type="range"
-              id="points"
-              name="EDM"
-              min="1"
-              max="8"
-              value={music.EDM}
-              onChange={handleOnChangeMusic}
-            />
+          <select className="EDM" name="EDM" id="points" value={music.EDM} onChange={handleOnChangeMusic} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
           </div>
         </div>
       </div>
+      <br></br>
+      <div className="emailInput">
+        <span className="lableStyleCollege">How many hours per week do you listen to music? </span>
+        <div className="radioBox">
+          <input type="radio" id="current_college_name" name="current_college_name" value={userData.musicHours} />
+          <label className="collegeLabel" for="male">0-1</label> <br></br>
+        </div>
+        <br></br>
+        <div className="radioBox">
+          <input type="radio" id="current_college_name" name="current_college_name" value={userData.musicHours} />
+          <label className="collegeLabel" for="female">1-2</label> <br></br>
+        </div>
+        <div className="radioBox">
+          <input type="radio" id="current_college_name" name="current_college_name" value={userData.musicHours} />
+          <label className="collegeLabel" for="female">2-4</label> <br></br>
+        </div> <div className="radioBox">
+          <input type="radio" id="current_college_name" name="current_college_name" value={userData.musicHours} />
+          <label className="collegeLabel" for="female">4-6</label> <br></br>
+        </div> <div className="radioBox">
+          <input type="radio" id="current_college_name" name="current_college_name" value={userData.musicHours} />
+          <label className="collegeLabel" for="female">6-8</label> <br></br>
+        </div>
+      </div>
+      <br></br>
       <br />
       <div className="questionButton">
         <MusicButton title="Submit" isLoading={isLoading} onClick={Submit} />

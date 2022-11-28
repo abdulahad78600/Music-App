@@ -37,6 +37,8 @@
   color: white;
   padding-right: 30px;
   width: 80px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .rangeItems {
   display: flex;
@@ -91,4 +93,37 @@
 }
 .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root{
   display: none !important;
+}
+.genderLabel
+{
+  color: white;
+}
+.radioBox
+{
+  display: flex;
+  flex-direction: row;
+  width:210px;
+}
+.radiobox
+{
+  display: flex;
+  flex-direction: row;
+  width:210px;
+  padding-top: 5px;
+}
+.dropdown
+{
+  width:300px;
+}
+.lableStyleCollege
+{
+  width:238px ;
+  color:white;
+  padding-top: 5px;
+}
+.collegeLabel
+{
+  color:white;
+  padding-top:5px;
+  padding-bottom:5px;
 }
