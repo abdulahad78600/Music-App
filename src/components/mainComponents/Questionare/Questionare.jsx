@@ -9,7 +9,8 @@ import "./Questionare.css";
 
 const Questionare = () => {
   const [userData, setUserData] = useState({
-    name: "",
+    fName: "",
+    lName: "",
     gender: "",
     ethnicity: "",
     birth_date: "",
@@ -79,14 +80,27 @@ const Questionare = () => {
     <div className="mainContainerQuestion">
       <div className="headingStyle">Fill Out This Questionare</div>
       <div className="emailInput">
-        <span className="lableStyle">Name</span>
+        <span className="lableStyle">First Name</span>
         <input
           className="questionInput"
-          placeholder="Enter your name"
+          placeholder="Enter your first name"
           type="text"
-          id="name"
-          name="name"
-          value={userData.name}
+          id="fName"
+          name="fName"
+          value={userData.fName}
+          onChange={handleOnChange}
+        />
+      </div>
+      <br />
+      <div className="emailInput">
+        <span className="lableStyle">Last Name</span>
+        <input
+          className="questionInput"
+          placeholder="Enter your last name"
+          type="text"
+          id="lName"
+          name="lName"
+          value={userData.lName}
           onChange={handleOnChange}
         />
       </div>
