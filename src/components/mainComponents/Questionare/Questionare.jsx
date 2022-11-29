@@ -37,13 +37,13 @@ const Questionare = () => {
   });
   const navigates = useNavigate();
   const [music, setmusic] = useState({
-    RB: "0",
-    hip_hop: "0",
-    pop: "0",
-    rock: "0",
-    latin: "0",
-    country: "0",
-    EDM: "0",
+    RB: "Choose rank",
+    hip_hop: "Choose rank",
+    pop: "Choose rank",
+    rock: "Choose rank",
+    latin: "Choose rank",
+    country: "Choose rank",
+    EDM: "Choose rank",
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -219,9 +219,7 @@ const Questionare = () => {
       </div>
       <br />
       <div className="emailInput">
-        <span className="lableStyle">Ethenicity</span>
-        <label for="ethnicity">Enter ethnicity:</label>
-
+        <span className="lableStyle">Choose one of States</span>
         <select className="dropDown" name="states" id="states" value={userData.states} style={{ width: "220px", height: "32px", backgroundColor: "white", borderRadius: "30px" }} >
           <option value="Alabama.">Alabama.</option>
           <option value="Alaska.">Alaska.</option>
@@ -433,6 +431,7 @@ const Questionare = () => {
             <option value="6">6</option>
             <option value="7">7</option>
             <option value="8">8</option>
+            <option value="Choose rank">Choose rank</option>
           </select>
         </div>
         <br />
@@ -449,6 +448,7 @@ const Questionare = () => {
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
+              <option value="Choose rank">Choose rank</option>
             </select>
           </div>
         </div>{" "}
@@ -465,6 +465,8 @@ const Questionare = () => {
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
+              <option value="Choose rank">Choose rank</option>
+
             </select>
           </div>
         </div>{" "}
@@ -481,6 +483,7 @@ const Questionare = () => {
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
+              <option value="Choose rank">Choose rank</option>
             </select>
           </div>
         </div>{" "}
@@ -497,6 +500,7 @@ const Questionare = () => {
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
+              <option value="Choose rank">Choose rank</option>
             </select>
           </div>
         </div>{" "}
@@ -513,6 +517,7 @@ const Questionare = () => {
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
+              <option value="Choose rank">Choose rank</option>
             </select>
           </div>
         </div>{" "}
@@ -529,6 +534,7 @@ const Questionare = () => {
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
+              <option value="Choose rank">Choose rank</option>
             </select>
           </div>
         </div>
