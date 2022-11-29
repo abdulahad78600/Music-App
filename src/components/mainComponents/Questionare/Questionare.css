@@ -127,3 +127,11 @@
   padding-top:5px;
   padding-bottom:5px;
 }
+.genreStyle{
+  width: 220px;
+  height: 32px;
+  background-color: white;
+  border-radius:  30px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
