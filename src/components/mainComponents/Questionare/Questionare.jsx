@@ -142,7 +142,7 @@ const Questionare = () => {
       <div className="emailInput">
         <span className="lableStyle">Ethenicity</span>
         <select
-          className="dropDown"
+          className="genreStyle"
           name="ethnicity"
           id="ethnicity"
           value={userData.ethnicity}
@@ -168,7 +168,7 @@ const Questionare = () => {
       <div className="emailInput">
         <span className="lableStyle">Birthdate</span>
         <input
-          className="questionInput"
+          className="datePickerStyle"
           placeholder="Enter your birth_date"
           type="date"
           id="birth_date"
