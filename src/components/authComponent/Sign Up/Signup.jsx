@@ -7,7 +7,7 @@ import MusicButton from "../../commonComnents/Button";
 import { useSnackbar } from "notistack";
 import "./Signup.css";
 
-const Signup = () => {
+const Signup = () => {;
   const navigates = useNavigate();
   const emailRegex =
     /^([+\w-]+(?:\.[+\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;

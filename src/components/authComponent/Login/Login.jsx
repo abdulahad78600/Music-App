@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../../../utils/Firebase";
 import { setToken, setIsFilled, setID } from "../../../utils/LocalStorage";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +62,7 @@ const Login = () => {
         console.log("Error getting document:", error);
       });
   };
-
+  
   const [errorText, setErrorText] = useState("");
   const handleOnChange = (event) => {
     const { name, value } = event.target;
